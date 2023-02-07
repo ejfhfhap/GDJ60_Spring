@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.iu.s1.product.ProductDAO">
+  <!-- product list sql 설정 arraylist지만 resulttype은 dto임 -->
+  	<select id="getProductList" resultType="ProductDTO">
+  		SELECT productnum,productname, productjumsu
+  		FROM PRODUCT
+  		ORDER BY PRODUCTNUM DESC
+  	</select>
+  	
+  	<!-- product detail sql임 -->
+  	<select id="getProductDetail" parameterType="ProductDTO" resultType="ProductDTO">
+  		SELECT * FROM PRODUCT WHERE productnum=#{productnum}
+  	</select>
+  	
+ 	<select id="getProductNum" resultType="Integer">
+ 		SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL
+ 	</select>
+  	
+  	<insert id="setProductAdd" parameterType="ProductDTO">
+  		INSERT INTO PRODUCT VALUES(#{productnum},#{productname},#{productdetail},#{productjumsu})
+  	</insert>
+  	
+  	<!-- 레퍼런스 타입이 아니면 변수명 써도됨 getter로 가져오느는거니깐 왠만하면 레퍼런스로 함-->
+  	<delete id="setProductDelete" parameterType="Integer">
+  		DELETE PRODUCT WHERE productnum = #{productnum}
+  	</delete>
+  	
+  	<!-- private Integer PRODUCT_NUM;
+	private String PRODUCT_NAME;
+	private String PRODUCT_DETAIL;
+	private Double PRODUCT_RATE; -->
+	
+ </mapper>
