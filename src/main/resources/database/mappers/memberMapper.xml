@@ -12,6 +12,7 @@
  	<insert id="memberJoin" parameterType="MemberDTO">
  		INSERT INTO MEMBER VALUES(#{id},#{pw},#{name},#{address},#{phone},#{email})
  	</insert> 
+ 	
  </mapper>
  	<!-- private String id;
 	private String pw;

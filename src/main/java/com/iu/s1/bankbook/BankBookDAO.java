@@ -31,7 +31,6 @@ public class BankBookDAO {
 	}
 	
 	
-	
 //	private Integer bookNumber;
 //	private String bookName;
 //	private double bookRate;
