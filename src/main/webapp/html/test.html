@@ -8,15 +8,16 @@
 </head>
 <body>
     
-        <form action="./add" method="post" accept-charset="utf-8">
-            
-            bookNumber: <input type="text" name="bookNumber" id="" placeholder="number입력">
-            bookName: <input type="text" name="bookName" id="">
-            bookRate: <input type="number" name="bookRate" id="">
-            <br>
-            bookSale: <input type="number" name="bookSale" id="">
-            bookDetail: <textarea name="bookDetail" id="" cols="10" rows="10"></textarea>
-            <input type="submit" value="">
-        </form>
+        <fieldset>
+            <legend>이름</legend>
+            <input type="text" name="name" id="" value="강한나">
+        </fieldset>
+
+        <fieldset>
+            <legend>판매여부</legend>
+            <select name="bookSale" id="">
+                <option></option>
+            </select>
+        </fieldset>
 </body>
 </html>

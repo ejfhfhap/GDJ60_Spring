@@ -8,39 +8,41 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<link rel="stylesheet" href="../resources/css/product.css">k
 </head>
 <body>
 
 	
 	<h1>Product List</h1>
-	<a href = "./detail?productnum=1">productDetail</a>
+	<div class="title">
+		<a href = "./detail?productnum=1">productDetail</a>
+	</div>
+
 	
 	
 	<hr>
-	<div class="col-6">
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>상품명</th>
-					<th>평점</th>
-				</tr>
-			</thead>
-			
-			<tbody>
-				<c:forEach items="${list}" var="dto">
-					<tr>
-						<td><a href = "./detail?productnum=${dto.productnum}">${pageScope.dto.productnum}</a></td>
-						<td>${dto.productjumsu}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+
+	<table class="tb">
+		<thead>
+			<tr>
+				<th>상품명</th>
+				<th>평점</th>
+			</tr>
+		</thead>
 		
-		<a class="btn btn-danger" href="./productAdd">상품등록</a>
-		<a class="btn btn-danger" href="./update">상품 업데이트</a>
-		<a class="btn btn-danger" href = "./delete.do">member delete</a>
-	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+		<tbody>
+			<c:forEach items="${list}" var="dto">
+				<tr>
+					<td><a href = "./detail?productnum=${dto.productnum}">${pageScope.dto.productnum}</a></td>
+					<td>${dto.productjumsu}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+	
+	<a class="btn btn-danger" href="./productAdd">상품등록</a>
+	<a class="btn btn-danger" href="./update">상품 업데이트</a>
+	<a class="btn btn-danger" href = "./delete.do">member delete</a>
+
 </body>
 </html>

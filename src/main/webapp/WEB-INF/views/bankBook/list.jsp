@@ -6,9 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../resources/css/table.css">
 </head>
 <body> 
-	<table border="1">
+	<h2 class="title">list Page</h2>
+	<div class="image">
+		<img src="../resources/images/hanna.jpg" alt="">
+	</div>
+
+	<table border="1" class="table">
          <thead>
              <tr>
                  <th>bookNumber</th>

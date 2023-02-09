@@ -1,0 +1,15 @@
+.c2{
+    width: 200px;
+    height: 200px;
+    background-color: black;
+}
+
+.c2 p{
+    color: white;
+    text-decoration: line-through;
+}
+
+.c2 > div > p{
+    color: yellow;
+    text-decoration: underline;
+}

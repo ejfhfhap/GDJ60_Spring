@@ -52,9 +52,9 @@ public class BankBookController {
 	@RequestMapping(value = "/add" , method = RequestMethod.POST)
 	public ModelAndView setBankBookAdd(BankBookDTO bankBookDTO,HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
-		request.setCharacterEncoding("UTF-8");
+
 		System.out.println(bankBookDTO.getBookName());
-		int result = bankBookService.setBankBookAdd(bankBookDTO);
+		//int result = bankBookService.setBankBookAdd(bankBookDTO);
 		modelAndView.setViewName("redirect:./list");
 		
 		return modelAndView;
@@ -83,7 +83,7 @@ public class BankBookController {
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public ModelAndView setBankBookUpdate(BankBookDTO bankBookDTO,ModelAndView modelAndView) throws Exception{
-		bankBookService.setBankBookUpdate(bankBookDTO);
+		//int result = bankBookService.setBankBookUpdate(bankBookDTO);
 		modelAndView.setViewName("redirect: ./detail?bookNumber=" + bankBookDTO.getBookNumber());
 		return modelAndView;
 	}
