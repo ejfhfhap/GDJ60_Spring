@@ -10,7 +10,7 @@
 	<h1>상품수정 page</h1>
 	
 	<form action="./update" method = "post">
-		  bookNumber: <input type="text" name="bookNumber" value="${bankBookDTO.bookNumber}" id="">
+		  <input type="hidden" name="bookNumber" value="${bankBookDTO.bookNumber}" id="">
           bookName: <input type="text" name="bookName" value="${bankBookDTO.bookName}" id="">
           bookRate: <input type="number" name="bookRate" value="${bankBookDTO.bookRate}" id="">
           <br>
