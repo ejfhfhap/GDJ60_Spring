@@ -1,0 +1,19 @@
+.f1{
+    font-size: 2em;
+}
+.f1_1{
+    font-size: 2em;
+    font-weight: bold;
+}
+.f1_2{
+    font-weight: lighter;
+    /* font-style: italic; */
+    /* font-family: 'Babylonica', cursive;
+    font-family: 'Noto Sans KR', sans-serif; */
+    font-family: 'Roboto Condensed', sans-serif;
+    border: 1px red solid;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    line-height: 2;
+}

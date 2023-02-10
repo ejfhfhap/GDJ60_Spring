@@ -4,26 +4,37 @@
 <html>
 <head>
 	<title>Home</title>
+	<link rel="stylesheet" href="./resources/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="./resources/css/main.css">
 	
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/HjGF1ga1ijc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-<br>
-<!-- alt는 이미지가 없을때 나오는것 -->
-<img alt="is hanna" src="/resources/images/hanna.jpg">
-<img alt="is hanna2" src="./resources/images/hanna2.jpg">
-<br>
 
-<div>
-	<a href = "/product/list?num=1&num=2&num=3">product List</a>
-	<a href = "/bankBook/list">bankBook List</a>
-</div>
+	<header>
+		<div class="header_wrap">
+			<div class="header_logo">
+				<img src="/resources/images/logo.png" alt="">
+			</div>
+			<nav class="header_nav">
+				<ul>
+					<li><a href = "#">공지사항</a></li>
+					<li><a href = "#">제품</a></li>
+					<li><a href = "#">저축상품</a></li>
+					<li><a href = "#">기타메뉴</a></li>
+				</ul>
+			</nav>
+			<div class="header_sub">
+				<ul>
+					<li><a href = "#">Login</a></li>
+					<li><a href = "#">Join</a></li>
+					<li><a href = "#">Ko</a></li>
+					<li><a href = "#">En</a></li>
+					<li><a href = "#">Jp</a></li>
+					<li><a href = "#">Cn</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
 
-
-<P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>

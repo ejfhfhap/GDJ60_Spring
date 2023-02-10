@@ -1,0 +1,42 @@
+.c1{
+    width: 200px;
+    height: 200px;
+    margin: 50px 0px;
+}
+.bg1{
+    background-color: red;
+    border-right-color: black;
+    border-right-width: 3px;
+    border-right-style: solid;
+
+    border-top: black dotted 3px;
+    border-top-right-radius: 50px;
+
+    padding-top: 30px;
+}
+.bg2{
+    background-color: blue;
+    border: 3px purple solid;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    padding: 30px;
+}
+.bg3{
+    background-color: yellow;
+    border: 5px black solid;
+    border-radius: 100px;
+    padding: 80px;
+
+    /* 패딩해도 크기가 안늘어남 */
+    box-sizing: border-box;
+    /* 패딩할때 늘어남 */
+    box-sizing: content-box;
+
+}
+.d1{
+    color: red;
+    border: 1px solid black;
+    padding: 50px;
+    margin: 50px;
+    width: 200px;
+}

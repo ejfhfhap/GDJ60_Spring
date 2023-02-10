@@ -1,9 +1,17 @@
-.table{
+.tbl{
     width: 70%;
     height: 70%;
     margin-left: auto;
     margin-right: auto;
+    border: 1px solid black;
+
+    /* 테이블 내에서 보더랑 보더 간격 */
+    border-spacing: 0px;
+    /* 선이 합쳐질때 두개를 합칠건지(collapse) 분리할지 */
+    border-collapse: collapse;
 }
+
+
 .title{
     width: 30%;
     margin-left: auto;
@@ -13,4 +21,37 @@
     width: 30%;
     margin-left: auto;
     margin-right: auto;
+}
+.td1_td{
+    text-align: center;
+}
+
+.tb1 th, .tbl td{
+    border: 1px solid black;
+    height: 50px;
+}
+
+.tb1>thead>tr>th{
+    background-color: black;
+    color: white;
+}
+.tb1 a{
+    text-decoration: none;
+    color: black;
+}
+
+
+.tb2{
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+.tb2>thead{
+    background-color: black;
+    color: white;
+}
+.bor_ri{
+    border-right: 1px blueviolet solid;
+}
+tbody>tr>td{
+    border-bottom: 1px black solid;
 }

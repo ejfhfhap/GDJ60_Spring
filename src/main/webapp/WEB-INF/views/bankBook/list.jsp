@@ -14,7 +14,7 @@
 		<img src="../resources/images/hanna.jpg" alt="">
 	</div>
 
-	<table border="1" class="table">
+	<table class="tb2">
          <thead>
              <tr>
                  <th>bookNumber</th>
@@ -27,10 +27,10 @@
          <tbody>
            	<c:forEach items="${bankBookDTOs}" var="dto">
                  <tr>
-               		<td>${dto.bookNumber}</td>
-               		<td><a href ="./detail?bookNumber=${dto.bookNumber}">${dto.bookName}</a></td>
-               		<td>${dto.bookRate}</td>
-               		<td>
+               		<td class = "bor_ri">${dto.bookNumber}</td>
+               		<td class = "bor_ri"><a href ="./detail?bookNumber=${dto.bookNumber}">${dto.bookName}</a></td>
+               		<td class="tdl_td bor_ri">${dto.bookRate}</td>
+               		<td class="tdl_td bor_ri">
                			<%-- <c:if test="${dto.bookSale eq 1}">판매중</c:if>
                			<c:if test="${dto.bookSale eq 0}">판매중단</c:if>  --%>
                			

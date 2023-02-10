@@ -1,0 +1,21 @@
+div{
+    display: inline-block;
+}
+.btn1{
+    color: red;
+    border: 5px solid yellowgreen;
+    background-color: aqua;
+    margin-right: 100px;
+    /* display: inline-block; */
+}
+.btn2{
+    color: cyan;
+    border: 3px solid darkorange;
+    margin-left: 100px;
+}
+.btn3{
+    margin: 50px;
+    color: lightgreen;
+    background-color: hotpink;
+    border: 5px solid chocolate;
+}

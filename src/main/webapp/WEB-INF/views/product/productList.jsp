@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../resources/css/product.css">k
+<link rel="stylesheet" href="../resources/css/table.css">k
 </head>
 <body>
 
@@ -22,7 +22,7 @@
 	
 	<hr>
 
-	<table class="tb">
+	<table class="tb1">
 		<thead>
 			<tr>
 				<th>상품명</th>
