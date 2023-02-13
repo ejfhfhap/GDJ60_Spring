@@ -4,11 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="../resources/css/table.css">
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="./resources/css/table.css">
+	<c:import url="../template/common_css.jsp"></c:import>
+	
 </head>
 <body> 
+	<c:import url="../template/header.jsp"></c:import>
+	
 	<h2 class="title">list Page</h2>
 	<div class="image">
 		<img src="../resources/images/hanna.jpg" alt="">

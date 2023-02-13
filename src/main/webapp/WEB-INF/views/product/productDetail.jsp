@@ -17,9 +17,9 @@
 	
 	<hr>
 	
-	<h3>${dto.PRODUCT_NAME}</h3>
-	<h3>${dto.PRODUCT_DETAIL}</h3>
-	<h3>${dto.PRODUCT_RATE * dto.PRODUCT_RATE}</h3>
+	<h3>${dto.productnum}</h3>
+	<h3>${dto.productdetail}</h3>
+	<h3>${dto.productjumsu * dto.productjumsu}</h3>
 	
 </body>
 </html>
