@@ -54,7 +54,7 @@ public class BankBookController {
 		ModelAndView modelAndView = new ModelAndView();
 
 		System.out.println(bankBookDTO.getBookName());
-		//int result = bankBookService.setBankBookAdd(bankBookDTO);
+		int result = bankBookService.setBankBookAdd(bankBookDTO);
 		modelAndView.setViewName("redirect:./list");
 		
 		return modelAndView;

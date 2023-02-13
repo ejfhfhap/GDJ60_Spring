@@ -16,32 +16,27 @@
 
 	<c:import url="../template/header.jsp"></c:import>
 	<h1>Product List</h1>
-	<div class="title">
-		<a href = "./detail?productnum=1">productDetail</a>
-	</div>
 
-	
-	
 	<hr>
-
-	<table class="tb1">
-		<thead>
-			<tr>
-				<th>상품명</th>
-				<th>평점</th>
-			</tr>
-		</thead>
-		
-		<tbody>
-			<c:forEach items="${list}" var="dto">
+	<div class = "row col-6 ms-3">
+		<table class="tb1 table table-striped-columns">
+			<thead>
 				<tr>
-					<td><a href = "./detail?productnum=${dto.productnum}">${pageScope.dto.productnum}</a></td>
-					<td>${dto.productjumsu}</td>
+					<th>상품명</th>
+					<th>평점</th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	
+			</thead>
+			
+			<tbody>
+				<c:forEach items="${list}" var="dto">
+					<tr>
+						<td><a href = "./detail?productnum=${dto.productnum}">${pageScope.dto.productnum}</a></td>
+						<td>${dto.productjumsu}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
 	<a class="btn btn-danger" href="./productAdd">상품등록</a>
 	<a class="btn btn-danger" href="./update">상품 업데이트</a>
 	<a class="btn btn-danger" href = "./delete.do">member delete</a>

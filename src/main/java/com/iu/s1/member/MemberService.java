@@ -18,8 +18,8 @@ public class MemberService {
 		return memberDTOs;
 	}
 	public int setMemberJoin(MemberDTO memberDTO) throws Exception {
-		String id = String.valueOf(memberDAO.getMemberID());
-		memberDTO.setId(id);
+//		String id = String.valueOf(memberDAO.getMemberID());
+//		memberDTO.setId(id);
 		int result = memberDAO.setMemberJoin(memberDTO);
 		return result;
 	}
