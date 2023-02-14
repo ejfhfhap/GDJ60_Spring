@@ -12,6 +12,9 @@
  	<insert id="memberJoin" parameterType="MemberDTO">
  		INSERT INTO MEMBER VALUES(#{id},#{pw},#{name},#{address},#{phone},#{email})
  	</insert> 
+ 	<insert id="" parameterType="MemberDTO">
+ 		INSERT INTO MEMBER_ROLE VALUES(#{id},(SELECT ROLENUM FROM ROLE WHERE ROLENAME = 'MEMBER'))	
+ 	</insert>
  	
  </mapper>
  	<!-- private String id;
