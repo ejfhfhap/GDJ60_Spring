@@ -12,14 +12,23 @@
  	<insert id="memberJoin" parameterType="MemberDTO">
  		INSERT INTO MEMBER VALUES(#{id},#{pw},#{name},#{address},#{phone},#{email})
  	</insert> 
- 	<insert id="" parameterType="MemberDTO">
+ 	<insert id="setMemberRoleAdd" parameterType="MemberDTO">
  		INSERT INTO MEMBER_ROLE VALUES(#{id},(SELECT ROLENUM FROM ROLE WHERE ROLENAME = 'MEMBER'))	
  	</insert>
- 	
+ 	<select id="getMemberLogin" parameterType="MemberDTO" resultType="MemberDTO">
+ 		SELECT ID FROM MEMBER WHERE ID = #{id} AND PW = #{pw}
+ 	</select>
+ 	<update id="setMemberUpdate" parameterType="MemberDTO">
+ 		UPDATE MEMBER SET NAME = #{name}, ADDRESS = #{address}, PHONE = #{phone}, EMAIL = #{email}
+ 		WHERE ID = #{id}
+ 	</update>
+ 	<select id="getMemberDetail" parameterType="MemberDTO" resultType="MemberDTO">
+ 		SELECT * FROM MEMBER WHERE ID = #{id}
+ 	</select>
  </mapper>
  	<!-- private String id;
 	private String pw;
 	private String name;
 	private String address;
-	private String call;
+	private String phone;
 	private String email; -->

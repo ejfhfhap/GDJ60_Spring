@@ -30,4 +30,16 @@ public class MemberDAO {
 	public int setMemberJoin(MemberDTO memberDTO) throws Exception {
 		return sqlSession.insert(namespace + "memberJoin", memberDTO);
 	}
+	public int setMemberRoleAdd(MemberDTO memberDTO)throws Exception{
+		return sqlSession.insert(namespace + "setMemberRoleAdd",memberDTO);
+	}
+	public MemberDTO getMemberLogin(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(namespace + "getMemberLogin", memberDTO);
+	}
+	public int setMemberUpdate(MemberDTO memberDTO)throws Exception{
+		return sqlSession.update(namespace + "setMemberUpdate", memberDTO);
+	}
+	public MemberDTO getMemberDetail(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(namespace +"getMemberDetail", memberDTO);
+	}
 }

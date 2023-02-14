@@ -21,6 +21,18 @@ public class MemberService {
 //		String id = String.valueOf(memberDAO.getMemberID());
 //		memberDTO.setId(id);
 		int result = memberDAO.setMemberJoin(memberDTO);
+		result = memberDAO.setMemberRoleAdd(memberDTO);
+		
 		return result;
+	}
+	public MemberDTO getMemberLogin(MemberDTO memberDTO)throws Exception{
+		memberDTO = memberDAO.getMemberLogin(memberDTO);
+		return memberDTO;
+	}
+	public int setMemberUpdate(MemberDTO memberDTO)throws Exception{
+		return memberDAO.setMemberUpdate(memberDTO);
+	}
+	public MemberDTO getMemberDetail(MemberDTO memberDTO)throws Exception{
+		return memberDAO.getMemberDetail(memberDTO);
 	}
 }

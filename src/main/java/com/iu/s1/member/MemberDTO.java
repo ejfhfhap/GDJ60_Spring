@@ -9,13 +9,14 @@ public class MemberDTO {
 	private String address;
 	private String phone;
 	private String email;
-	private List<RoleDTO> roleDTOs;
+	private RoleDTO roleDTOs;
 	
 	
-	public List<RoleDTO> getRoleDTOs() {
+
+	public RoleDTO getRoleDTOs() {
 		return roleDTOs;
 	}
-	public void setRoleDTOs(List<RoleDTO> roleDTOs) {
+	public void setRoleDTOs(RoleDTO roleDTOs) {
 		this.roleDTOs = roleDTOs;
 	}
 	public String getId() {
