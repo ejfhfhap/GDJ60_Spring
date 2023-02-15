@@ -16,15 +16,12 @@
  		INSERT INTO MEMBER_ROLE VALUES(#{id},(SELECT ROLENUM FROM ROLE WHERE ROLENAME = 'MEMBER'))	
  	</insert>
  	<select id="getMemberLogin" parameterType="MemberDTO" resultType="MemberDTO">
- 		SELECT ID FROM MEMBER WHERE ID = #{id} AND PW = #{pw}
+ 		SELECT * FROM MEMBER WHERE ID = #{id}
  	</select>
  	<update id="setMemberUpdate" parameterType="MemberDTO">
  		UPDATE MEMBER SET NAME = #{name}, ADDRESS = #{address}, PHONE = #{phone}, EMAIL = #{email}
  		WHERE ID = #{id}
  	</update>
- 	<select id="getMemberDetail" parameterType="MemberDTO" resultType="MemberDTO">
- 		SELECT * FROM MEMBER WHERE ID = #{id}
- 	</select>
  </mapper>
  	<!-- private String id;
 	private String pw;

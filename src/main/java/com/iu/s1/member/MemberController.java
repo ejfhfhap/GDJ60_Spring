@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,8 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private MemberDAO memberDAO;
 	
 	@RequestMapping("/memberList")
 	public ModelAndView memberList() throws Exception {
@@ -57,14 +60,12 @@ public class MemberController {
 	public ModelAndView memberLoginPost(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
 		memberDTO = memberService.getMemberLogin(memberDTO);
-		memberDTO = memberService.getMemberDetail(memberDTO);
+		
 //		session table를 만들고 사용자한테 보냄
-		HttpSession session = request.getSession();
-		session.setAttribute("member", memberDTO);
-		
-		//modelAndView.addObject("member", memberDTO);
-		
 		if(memberDTO != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("member", memberDTO);
+			
 			System.out.println("로그인 성공!!");
 			modelAndView.setViewName("redirect: ../");
 		}else {
@@ -76,10 +77,19 @@ public class MemberController {
 	
 
 	@RequestMapping("/memberPage")
-	public ModelAndView memberPage() {
+	public ModelAndView memberPage(HttpSession session) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		memberDTO = memberService.getMemberPage(memberDTO);
+		
+		modelAndView.addObject("dto", memberDTO);
 		modelAndView.setViewName("member/memberPage");
 		return modelAndView;
+	}
+	
+	public MemberDTO getMemberPage(MemberDTO memberDTO)throws Exception{
+		return memberDAO.getMemberLogin(memberDTO);
 	}
 	
 	@RequestMapping(value = "/memberLogout", method = RequestMethod.GET)
@@ -91,8 +101,13 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/member/memberUpdate", method = RequestMethod.GET)
-	public ModelAndView setMemberUpdate() {
+	public ModelAndView setMemberUpdate(HttpSession session) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		memberDTO = memberService.getMemberPage(memberDTO);
+		
+		modelAndView.addObject("dto", memberDTO);
 		modelAndView.setViewName("/member/memberUpdate");
 		return modelAndView;
 	}
@@ -100,16 +115,13 @@ public class MemberController {
 	@RequestMapping(value = "/member/memberUpdate", method = RequestMethod.POST)
 	public ModelAndView setMemberUpdate(MemberDTO memberDTO, HttpSession session) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
-		//System.out.println(memberDTO.getAddress());
 		
 		MemberDTO memberDTO2 = (MemberDTO)session.getAttribute("member");
 		memberDTO.setId(memberDTO2.getId());
 		
 		int result = memberService.setMemberUpdate(memberDTO);
-		// memberDTO = memberService.getMemberDetail(memberDTO);
-		if(result>0) {
-			session.setAttribute("member", memberDTO);
-		}
+
+		
 		modelAndView.setViewName("redirect: ../");
 		return modelAndView;
 	}

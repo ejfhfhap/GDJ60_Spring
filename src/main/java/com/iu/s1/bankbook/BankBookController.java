@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.s1.util.Pager;
+
 @Controller
 @RequestMapping("/bankBook/*")
 public class BankBookController {
@@ -18,13 +20,16 @@ public class BankBookController {
 	private BankBookService bankBookService;
 	
 	@RequestMapping("/list")
-	public ModelAndView getBankBookList() throws Exception {
+	public ModelAndView getBankBookList(Pager pager) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
 		
-		List<BankBookDTO> bankBookDTOs = bankBookService.getBankBookList();
-		modelAndView.addObject("bankBookDTOs", bankBookDTOs);
-		modelAndView.setViewName("/bankBook/list");
+		//System.out.println("서비스 들어가기전 " + pager.getTotalCount());
+		List<BankBookDTO> bankBookDTOs = bankBookService.getBankBookList(pager);
+		//System.out.println("서비스 들어가기후 " + pager.getTotalCount());
 		
+		modelAndView.addObject("bankBookDTOs", bankBookDTOs);
+		modelAndView.addObject("pager", pager);
+		modelAndView.setViewName("/bankBook/list");
 		
 		return modelAndView;
 	}
@@ -53,7 +58,6 @@ public class BankBookController {
 	public ModelAndView setBankBookAdd(BankBookDTO bankBookDTO,HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
 
-		System.out.println(bankBookDTO.getBookName());
 		int result = bankBookService.setBankBookAdd(bankBookDTO);
 		modelAndView.setViewName("redirect:./list");
 		

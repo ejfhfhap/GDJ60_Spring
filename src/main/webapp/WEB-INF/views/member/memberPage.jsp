@@ -15,10 +15,10 @@
 		 <h2> member Page</h2>
 	 </div>
 	 <div class = "row">
-		 <h2>name: ${member.name}</h2>
-		 <h2>address: ${member.address}</h2>
-	     <h2>phone: ${member.phone}</h2>
-		 <h2>email: ${member.email}</h2>
+		 <h2>name: ${dto.name}</h2>
+		 <h2>address: ${dto.address}</h2>
+	     <h2>phone: ${dto.phone}</h2>
+		 <h2>email: ${dto.email}</h2>
 	 	 <a href = "./memberUpdate" class = "btn btn-info">정보수정</a>
 	 </div>
  </div>

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.iu.s1.util.Pager;
+
 @Service
 public class MemberService {
 	
@@ -25,14 +27,23 @@ public class MemberService {
 		
 		return result;
 	}
-	public MemberDTO getMemberLogin(MemberDTO memberDTO)throws Exception{
-		memberDTO = memberDAO.getMemberLogin(memberDTO);
-		return memberDTO;
-	}
 	public int setMemberUpdate(MemberDTO memberDTO)throws Exception{
 		return memberDAO.setMemberUpdate(memberDTO);
 	}
 	public MemberDTO getMemberDetail(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getMemberDetail(memberDTO);
+	}
+	
+	public MemberDTO getMemberLogin(MemberDTO memberDTO)throws Exception{
+		MemberDTO memberDTO2 = memberDAO.getMemberLogin(memberDTO);
+		if(memberDTO2 != null && memberDTO2.getPw().equals(memberDTO.getPw())) {
+			memberDTO.setPw(null);
+			return memberDTO;
+		}else {
+			return null;
+		}
+	}
+	public MemberDTO getMemberPage(MemberDTO memberDTO)throws Exception{
+		return memberDAO.getMemberLogin(memberDTO);
 	}
 }

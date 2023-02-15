@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.iu.s1.product.ProductDTO;
 import com.iu.s1.util.DBConnection;
+import com.iu.s1.util.Pager;
 
 @Repository
 public class MemberDAO {

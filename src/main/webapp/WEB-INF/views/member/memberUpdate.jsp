@@ -11,19 +11,19 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
     <form action="/member/memberUpdate" method="post">
-       <%--  <input type="hidden" name="id" value="${member.id}"> --%>
+       <%--  <input type="hidden" name="id" value="${dto.id}"> --%>
 
         <label>name</label>
-		<input type="text" id="name" name="name" class="form-control" value="${member.name}">
+		<input type="text" id="name" name="name" class="form-control" value="${dto.name}">
 
         <label>address</label>
-		<input type="text" id="address" name="address" class="form-control" value="${member.address}" >
+		<input type="text" id="address" name="address" class="form-control" value="${dto.address}" >
 
         <label>phone</label>
-		<input type="text" id="phone" name="phone" class="form-control" value="${member.phone}">
+		<input type="text" id="phone" name="phone" class="form-control" value="${dto.phone}">
 
         <label>email</label>
-		<input type="text" id="email" name="email" class="form-control" value="${member.email}">
+		<input type="text" id="email" name="email" class="form-control" value="${dto.email}">
 
 		
 
