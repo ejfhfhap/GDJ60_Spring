@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.iu.s1.util.DBConnection;
+import com.iu.s1.util.Pager;
 
 @Repository
 public class ProductDAO {
@@ -38,50 +39,14 @@ public class ProductDAO {
 	public int getProductNum() throws Exception {
 		return sqlSession.selectOne(NAMESPACE + "getProductNum");
 	}
-//	public List<ProductOptionDTO> getProductOptionList() throws Exception {
-//		Connection connection = dataSource.getConnection();
-//		String sql = "SELECT * FROM PRODUCT_OPTION";
-//		PreparedStatement preparedStatement = connection.prepareStatement(sql);
-//		ResultSet resultSet = preparedStatement.executeQuery();
-//		
-//		ArrayList<ProductOptionDTO> ar = new ArrayList<ProductOptionDTO>();
-//		while(resultSet.next()) {
-//			ProductOptionDTO productOptionDTO = new ProductOptionDTO();
-//			productOptionDTO.setOption_num(resultSet.getInt("OPTION_NUM"));
-//			productOptionDTO.setProduct_num(resultSet.getInt("PRODUCT_NUM"));
-//			productOptionDTO.setOption_name(resultSet.getString("OPTION_NAME"));
-//			productOptionDTO.setOption_price(resultSet.getInt("OPTION_PRICE"));
-//			productOptionDTO.setOption_each(resultSet.getInt("OPTION_EACH"));
-//			ar.add(productOptionDTO);
-//		}
-//		DBConnection.disConnection(resultSet, preparedStatement, connection);
-//		return ar;
-//	}
-//	public int AddProductOption(ProductOptionDTO productOptionDTO) throws Exception {
-//		Connection connection = DBConnection.getConnection();
-//		String sql = "INSERT INTO PRODUCT_OPTION VALUES(PRODUCT_OPTION_SEQ.NEXTVAL,?,?,?,?)";
-//		PreparedStatement preparedStatement = connection.prepareStatement(sql);
-//		preparedStatement.setInt(1, productOptionDTO.getProduct_num());
-//		preparedStatement.setString(2, productOptionDTO.getOption_name());
-//		preparedStatement.setInt(3, productOptionDTO.getOption_price());
-//		preparedStatement.setInt(4, productOptionDTO.getOption_each());
-//		
-//		int result = preparedStatement.executeUpdate();
-//		DBConnection.disConnection(preparedStatement, connection);
-//		return result;
-//		
-////		private Integer option_num;
-////		private Integer product_num;
-////		private String option_name;
-////		private Integer option_price;
-////		private Integer option_each;
-//	}
 	
-	
-	public List<ProductDTO> getProductList() throws Exception{
-		return sqlSession.selectList(NAMESPACE + "getProductList");
+	public List<ProductDTO> getProductList(Pager pager) throws Exception{
+		return sqlSession.selectList(NAMESPACE + "getProductList",pager);
 	}
 	
+	public int getProductCount(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getProductCount", pager);
+	}
 	
 	public int setProductAdd(ProductDTO productDTO) throws Exception {
 		

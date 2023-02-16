@@ -2,7 +2,35 @@ package com.iu.s1.util;
 
 public class Pager {
 	
+	//검색 종류(사용할 컬럼)
+	private String kind;
+	// 검색어
+	private String search;
+	
+	//현재 페이지에 출력할 데이터 갯수
 	private Integer perPage;
+	
+	public String getKind() {
+		if(kind == null) {
+			kind = "contents";
+		}
+		return kind;
+	}
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+	public String getSearch() {
+		if(search == null) {
+			search="";
+		}
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
+	//한 블럭당 출력할 번호의 갯수
+	private Integer perBlock;
+	
 	// 현재 페이지 번호
 	private Integer page;
 	
@@ -43,23 +71,23 @@ public class Pager {
 		}
 		
 		// 한번에 보여줄 페이지 번호갯수
-		int perBlock = 5;
+		
 		
 		// 한번에 보여줄 페이지 블럭 갯수
-		int totalBlock = (totalPage / perBlock);
-		if(totalPage % perBlock != 0) {
+		int totalBlock = (totalPage / this.getPerBlock());
+		if(totalPage % this.getPerBlock() != 0) {
 			totalBlock++;
 		}
 		
 		// 현재 페이지 블럭 번호
-		int curBlock = this.getPage() / perBlock;
+		int curBlock = this.getPage() / this.getPerBlock();
 		if(this.page % perBlock != 0) {
 			curBlock++;
 		}
 		
 		// 현재 블럭 번호의 시작 번호와 끝 번호 계산
-		this.startNum = ((curBlock-1) * perBlock) + 1;
-		this.lastNum = curBlock * perBlock;
+		this.startNum = ((curBlock-1) * this.getPerBlock()) + 1;
+		this.lastNum = curBlock * this.getPerBlock();
 		
 		this.after=true;
 		if(curBlock == totalBlock) {
@@ -71,11 +99,18 @@ public class Pager {
 			this.before = true;
 		}
 	}
+	public Integer getPerBlock() {
+		if(this.perBlock == null || this.perBlock < 1) {
+			this.perBlock = 5;
+		}
+		
+		return perBlock;
+	}
+	public void setPerBlock(Integer perBlock) {
+		this.perBlock = perBlock;
+	}
 	public Integer getTotalPage() {
 		return totalPage;
-	}
-	public void setTotalPage(Integer totalPage) {
-		this.totalPage = totalPage;
 	}
 	// startRow lastRow 계산 하는 메서드
 	public void makeRow() {

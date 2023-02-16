@@ -17,7 +17,7 @@ public class BankBookService {
 
 
 		// 리스트 전체갯수
-		int totalCount = bankBookDAO.getBankBookCount();
+		int totalCount = bankBookDAO.getBankBookCount(pager);
 		pager.makeNum(totalCount);
 		pager.makeRow();
 		

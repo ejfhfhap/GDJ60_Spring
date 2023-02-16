@@ -21,6 +21,9 @@ public class ProductDTO {
 		this.productname = productname;
 	}
 	public String getProductdetail() {
+		if(productdetail == null) {
+			productdetail = "";
+		}
 		return productdetail;
 	}
 	public void setProductdetail(String productdetail) {

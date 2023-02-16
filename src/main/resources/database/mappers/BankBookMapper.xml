@@ -3,10 +3,33 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.iu.s1.bankbook">
+ 	<sql id="searchCondition">
+ 		WHERE 
+		<choose>
+			<when test="kind == 'contents'">
+				BOOKDETAIL
+			</when>
+			<otherwise>
+				BOOKNAME
+			</otherwise>
+		</choose>
+		LIKE '%' || #{search} || '%'
+ 	</sql>
+ 	
+	 <select id="getBankBookCount" parameterType="Pager" resultType="Integer">
+ 		SELECT COUNT(BOOKNUMBER) FROM BANKBOOK
+
+		<include refid="searchCondition"></include>
+		
+ 	</select>
+ 	
  	<select id="getBankBookList" parameterType="Pager" resultType="BankBookDTO">
  		SELECT * FROM 
 		(SELECT ROWNUM R, B.* FROM
 		(SELECT * FROM BANKBOOK
+		
+		<include refid="searchCondition"></include>
+		
 		ORDER BY BOOKNUMBER DESC) B)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
  	</select>
@@ -25,9 +48,6 @@
  		DELETE BANKBOOK WHERE bookNumber = #{bookNumber}
  	</delete>
  	
- 	<select id="getBankBookCount" resultType="Integer">
- 		SELECT COUNT(BOOKNUMBER) FROM BANKBOOK
- 	</select>
  	
  </mapper>
 <!--  	private Integer bookNumber;

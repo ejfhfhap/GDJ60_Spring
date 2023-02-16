@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.s1.util.Pager;
+
 @Controller
 @RequestMapping("/product/*")
 public class ProductController {
@@ -24,16 +26,19 @@ public class ProductController {
 	
 	
 	@RequestMapping(value = "list")
-	public ModelAndView getProductList(ProductDTO productDTO) throws Exception{
+	public ModelAndView getProductList(Pager pager) throws Exception{
 		
-		System.out.println("Product List");
-		List<ProductDTO> ar = productServices.getProductList();
-		System.out.println(ar.size()>0);
+		
+		List<ProductDTO> ar = productServices.getProductList(pager);
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("product/productList"); // jsp 설정
-		modelAndView.addObject("list", ar); // list 변수 jsp로 보냄 attribute랑 같은역할
 		
+		modelAndView.addObject("list", ar); // list 변수 jsp로 보냄 attribute랑 같은역할
+		modelAndView.addObject("pager", pager);
+		
+		System.out.println("startNum " + pager.getStartNum());
+		System.out.println("lastNum " + pager.getLastNum());
 		return modelAndView;
 	}
 	

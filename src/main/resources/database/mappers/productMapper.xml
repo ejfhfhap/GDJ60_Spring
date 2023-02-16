@@ -5,12 +5,37 @@
   
  <mapper namespace="com.iu.s1.product.ProductDAO">
   <!-- product list sql 설정 arraylist지만 resulttype은 dto임 -->
-  	<select id="getProductList" resultType="ProductDTO">
-  		SELECT productnum,productname, productjumsu
-  		FROM PRODUCT
-  		ORDER BY PRODUCTNUM DESC
-  	</select>
+  	<select id="getProductList" parameterType="Pager" resultType="ProductDTO">
   	
+  		SELECT * FROM(
+		SELECT ROWNUM R, P.* FROM(
+		(
+			SELECT * FROM PRODUCT
+	  		<if test="kind == 'name'">
+  			WHERE PRODUCTNAME LIKE '%' || #{search} || '%'
+	  		</if>
+	  		<if test="kind == 'detail'">
+	  			WHERE PRODUCTDETAIL LIKE '%' || #{search} || '%'
+	  		</if> 
+	  		ORDER BY PRODUCTNUM DESC
+		) P 
+		))
+		WHERE R BETWEEN ${startRow} AND ${lastRow}
+		
+		
+  	<!-- 	SELECT productnum,productname, productjumsu
+  		FROM PRODUCT  -->
+
+  	</select>
+  	<select id="getProductCount" parameterType="Pager" resultType="Integer">
+  		SELECT COUNT(productnum) FROM PRODUCT
+  		<if test="kind == 'name'">
+  			WHERE PRODUCTNAME LIKE '%' || #{search} || '%'
+  		</if>
+  		<if test="kind == 'detail'">
+  			WHERE PRODUCTDETAIL LIKE '%' || #{search} || '%'
+  		</if>
+  	</select>
   	<!-- product detail sql임 -->
   	<select id="getProductDetail" parameterType="ProductDTO" resultType="ProductDTO">
   		SELECT * FROM PRODUCT WHERE productnum=#{productnum}

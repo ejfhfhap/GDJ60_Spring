@@ -30,12 +30,39 @@
 			<tbody>
 				<c:forEach items="${list}" var="dto">
 					<tr>
-						<td><a href = "./detail?productnum=${dto.productnum}">${pageScope.dto.productnum}</a></td>
-						<td>${dto.productjumsu}</td>
+						<td><a href = "./detail?productnum=${dto.productnum}">${pageScope.dto.productname}</a></td>
+						<td>${dto.productdetail}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		
+		<div>
+			<nav aria-label="Page navigation example">
+			  <ul class="pagination">
+			    <li class="page-item"><a class="page-link" href="./list?page=${pager.startNum - 1}&kind=${pager.kind}&search=${pager.search}">Previous</a></li>
+					<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i" >
+				    	<li class="page-item"><a class="page-link" href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
+					</c:forEach>
+  			    <li class="page-item"><a class="page-link" href="./list?page=${pager.lastNum + 1}&kind=${pager.kind}&search=${pager.search}">Next</a></li>
+			  </ul>
+			</nav>
+		</div>
+			<form action="./list" method="get">
+		  	  <div class="mb-3 row">
+				<select name = "kind" class="form-select form-select-sm" aria-label=".form-select-sm example">
+				  <option value="name">상품 이름으로 검색</option>
+				  <option value="detail">상품 설명으로 검색</option>
+				</select>
+			  </div>
+			  <div class="mb-3 row">
+			    <label for="search" class="col-sm-2 col-form-label">내용</label>
+			    <div class="col-sm-10">
+			      <input name = "search" type="text" class="form-control" id="search">
+			   </div>
+			   <input type="submit" value="검색하기">
+			 </form>
+  		</div>
 	</div>
 	<a class="btn btn-danger" href="./productAdd">상품등록</a>
 	<a class="btn btn-danger" href="./update">상품 업데이트</a>

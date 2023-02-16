@@ -31,8 +31,8 @@ public class BankBookDAO {
 	public int setBankBookDelete(BankBookDTO bankBookDTO)throws Exception {
 		return sqlSession.delete(NAMESPACE+"setBankBookDelete",bankBookDTO);
 	}
-	public int getBankBookCount()throws Exception {
-		return sqlSession.selectOne(NAMESPACE + "getBankBookCount");
+	public int getBankBookCount(Pager pager)throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getBankBookCount",pager);
 	}
 	
 //	private Integer bookNumber;

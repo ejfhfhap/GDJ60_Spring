@@ -58,10 +58,17 @@
 						  <textarea name = "bookDetail" class="form-control" placeholder="Leave a comment here" id="floatingTextarea" rows=20></textarea>
 						  <label for="floatingTextarea">Comments</label>
 					 </div>
-					 
-					 
 		          </fieldset>
-		
+					
+				  <fieldset class="col-2">
+		          	  <legend class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">파일선택</legend>
+		          	  
+		          	  <div class="form-floating">
+						   <input type = "file" class="form-control" id="files" name="pic">
+						  <label for="files">이미지</label>
+					 </div>
+		          </fieldset>
+		          
 			         <!--  <select name="bookSale">
 			          	<option value="1">판매</option>
 			          	<option selected="selected" value="0">판매중단</option>
