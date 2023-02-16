@@ -20,7 +20,7 @@
 		</div>
 		
 
-	    <form action="./add" method="post">
+	    <form action="./add" method="post" enctype="multipart/form-data">
  	  		<div class="row pb-5">
 			 	  <fieldset class="col-1">
 			 	 		<legend class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">상품번호</legend>

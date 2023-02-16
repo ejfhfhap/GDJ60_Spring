@@ -9,7 +9,9 @@
   		<typeAlias type="java.lang.Integer" alias="Integer"/>
   		<typeAlias type="com.iu.s1.member.MemberDTO" alias="MemberDTO"/>
   		<typeAlias type="com.iu.s1.bankbook.BankBookDTO" alias="BankBookDTO"/>
+  		<typeAlias type="com.iu.s1.bankbook.BankBookImgDTO" alias="BankBookImgDTO"/>
   		<typeAlias type="com.iu.s1.member.RoleDTO" alias="RoleDTO"/>
   		<typeAlias type="com.iu.s1.util.Pager" alias="Pager"/>
+
   	</typeAliases>
   </configuration>

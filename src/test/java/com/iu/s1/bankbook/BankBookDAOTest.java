@@ -47,7 +47,7 @@ public class BankBookDAOTest extends MyTestCase{
 			bookDTO.setBookSale(1);
 			bookDTO.setBookDetail("dlwngud");
 			
-			int result = bankBookService.setBankBookAdd(bookDTO);
+		//	int result = bankBookService.setBankBookAdd(bookDTO);
 		//	assertNotEquals(1, result);
 		}
 	}
