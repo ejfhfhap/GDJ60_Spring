@@ -16,6 +16,12 @@
 		<h2>bookRate = ${bankBookDTO.bookRate}</h2>
 		<h2>bookSale = ${bankBookDTO.bookSale}</h2>
 		<h2>bookDetail = ${bankBookDTO.bookDetail}</h2>
+		<div>
+			<c:if test="${not empty bankBookDTO.bankBookImgDTO}">
+				<img src="../resources/upload/bankBook/${bankBookDTO.bankBookImgDTO.fileName}">
+			</c:if>
+		</div>
+		
 		<a href = "./delete?bookNumber=${bankBookDTO.bookNumber}">삭제</a>
 		<a href = "./update?bookNumber=${bankBookDTO.bookNumber}">업데이트</a>
 	</c:if>

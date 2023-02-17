@@ -45,7 +45,7 @@ public class BankBookController {
 		bankBookDTO = bankBookService.getBankBookDetail(bankBookDTO);
 		modelAndView.addObject("bankBookDTO", bankBookDTO);
 		modelAndView.setViewName("/bankBook/detail");
-		
+		//System.out.println("file name  " + bankBookDTO.getBankBookImgDTO().getFileName());
 		return modelAndView;
 	}
 	
