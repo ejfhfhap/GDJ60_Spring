@@ -22,6 +22,15 @@ public class MemberController {
 	@Autowired
 	private MemberDAO memberDAO;
 	
+	@RequestMapping(value = "/memberAgree")
+	public ModelAndView setMemberAgree() throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		
+		modelAndView.setViewName("/member/memberAgree");
+		return modelAndView;
+	}
+	
 	@RequestMapping("/memberList")
 	public ModelAndView memberList() throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
