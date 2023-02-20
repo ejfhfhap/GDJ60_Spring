@@ -19,7 +19,7 @@
 			
 			<c:if test="${empty member}">
 				<li class="nav-item"><a class="nav-link fs-6" href = "/member/memberLogin">Login</a></li>
-				<li class="nav-item"><a class="nav-link" href = "/member/memberJoin">Join</a></li>
+				<li class="nav-item"><a class="nav-link" href = "/member/memberAgree">Join</a></li>
 			</c:if>
 			<c:if test="${not empty member}">
 				<li class="nav-item"><a class="nav-link fs-6" href = "/member/memberPage">MyPage</a></li>

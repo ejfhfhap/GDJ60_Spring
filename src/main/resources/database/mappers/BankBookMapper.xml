@@ -33,12 +33,47 @@
 		ORDER BY BOOKNUMBER DESC) B)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
  	</select>
- 	<select id="getBankBookDetail" parameterType="BankBookDTO" resultType="BankBookDTO">
- 		SELECT * FROM BANKBOOK WHERE BOOKNUMBER = #{bookNumber}
+ 	
+ 	<!-- 포함관계일때 getter가 다르므로 resultMap을 씀 -->
+ 	<select id="getBankBookDetail" parameterType="BankBookDTO" resultMap="bankBookDetailResult">
+ 		SELECT * FROM BANKBOOK B
+		LEFT JOIN BANKBOOKIMG B2 USING(BOOKNUMBER)
+		WHERE BOOKNUMBER = #{bookNumber}
  	</select>
+ 	
+ 	<!-- type = 리턴할 타입 -->
+ 	<resultMap type="BankBookDTO" id="bankBookDetailResult">
+ 		<!-- id는 primary key -->
+ 		<!-- column db테이블 컬럼명,SETTER이름  -->
+ 		<id column="BOOKNUMBER" property="bookNumber"/>
+ 		
+ 		<!-- 그 외 나머지 -->
+ 		<result column="BOOKNAME" property="bookName"/>
+ 		<result column="BOOKDETAIL" property="bookDetail"/>
+ 		<result column="BOOKRATE" property="bookRate"/>
+ 		<result column="BOOKSALE" property="bookSale"/>
+ 		
+ 		<!-- 1:1 관계일때 -->
+ 		<!-- javaType는 패키지명 -->
+ 		<association property="bankBookImgDTO" javaType="BankBookImgDTO">
+ 			<id column="FILENUM" property="fileNum"/>
+ 			<result column="FILENAME" property="fileName"/>
+ 			<result column="ORINAME" property="oriName"/>
+ 		</association>
+ 		
+ 		<!-- 1:N 관계일때 -->
+ 		<!-- <collection property=""></collection> -->
+ 	</resultMap>
+ 	
  	<insert id="setBankBookAdd" parameterType="BankBookDTO">
- 		INSERT INTO BANKBOOK VALUES(BANKBOOK_SEQ.NEXTVAL,#{bookName},#{bookRate},#{bookSale},#{bookDetail})
+ 	
+ 		<selectKey order="BEFORE" keyProperty="bookNumber" resultType="Integer">
+ 			SELECT BANKBOOK_SEQ.NEXTVAL FROM DUAL
+ 		</selectKey>
+ 		
+ 		INSERT INTO BANKBOOK VALUES(#{bookNumber},#{bookName},#{bookRate},#{bookSale},#{bookDetail})
  	</insert>
+ 	
  	<update id="setBankBookUpdate" parameterType="BankBookDTO">
  		UPDATE BANKBOOK SET bookName = #{bookName}, bookRate = #{bookRate},
  							bookSale = #{bookSale}, bookDetail = #{bookDetail}
@@ -47,6 +82,10 @@
  	<delete id="setBankBookDelete" parameterType="BankBookDTO">
  		DELETE BANKBOOK WHERE bookNumber = #{bookNumber}
  	</delete>
+ 	
+ 	<insert id="setBankBookImgAdd" parameterType="BankBookImgDTO">
+ 		INSERT INTO BANKBOOKIMG VALUES(BANKBOOK_SEQ.NEXTVAL, #{bookNumber},#{fileName},#{oriName})
+ 	</insert>
  	
  	
  </mapper>
