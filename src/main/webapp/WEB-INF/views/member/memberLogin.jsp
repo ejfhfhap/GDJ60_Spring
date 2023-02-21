@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <c:import url="../template/common_css.jsp"></c:import>
 
+
 </head>
 <body class="bg-primary text-white bg-opacity-50">
 	<c:import url="../template/header.jsp"></c:import>

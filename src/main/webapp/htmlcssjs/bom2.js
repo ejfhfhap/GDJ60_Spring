@@ -48,20 +48,3 @@ btn2.addEventListener("click",()=>{
         }
     }
 })
-
-// 이건 element가 아니라 element배열이라서 이벤트할때 첫번째 element만 적용됨 그래서 하나씩 꺼내기 위해 반복문씀
-const options2 = document.getElementsByClassName("options2");
-
-for(let i = 0;i<options2.length;i++){
-    options2[i].addEventListener("click",function(){
-        console.log(this.checked);
-        for(let j = 0;j<options2.length;j++){
-            options2[j].checked = this.checked;
-        }
-    })
-}
-
-
-
-
-

@@ -35,3 +35,10 @@ joinBtn.addEventListener("click",()=>{
     }
 })
 
+const btn  = document.getElementById("btn");
+btn.addEventListener("click",()=>{
+        var x = document.getElementById("abc");
+        x.className = "show";
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+
+})

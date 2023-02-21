@@ -16,4 +16,7 @@
 		<!-- 전체 upload하는 파일 크기 -->
 		<property name="maxUploadSize" value="31457280" ></property>
 	</bean>
+	
+	<!--  test 시 임시로 ServletContext 객체 생성 -->
+	<bean class="org.springframework.mock.web.MockServletContext" id="servletContext"></bean>
 </beans>
