@@ -60,15 +60,17 @@
 					 </div>
 		          </fieldset>
 					
-				  <fieldset class="col-2">
-		          	  <legend class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">파일선택</legend>
-		          	  
-		          	  <div class="form-floating">
-						   <input type = "file" class="form-control" id="files" name="pic">
-						  <label for="files">이미지</label>
-					 </div>
-		          </fieldset>
-		          
+				  <div id="fileList">
+					<!-- <fieldset class="col-2">
+						<legend class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">파일선택</legend>
+						<div class="form-floating">
+							<input type = "file" class="form-control" id="files" name="pic">
+							<label for="files">이미지</label>
+						</div>
+					</fieldset> -->
+					<button type="button" id = "btnAdd">ADD</button>
+				  </div>
+
 			         <!--  <select name="bookSale">
 			          	<option value="1">판매</option>
 			          	<option selected="selected" value="0">판매중단</option>
@@ -89,5 +91,9 @@
 	     </form>
      </div>
      <c:import url="../template/common_js.jsp"></c:import>
+	 <script src="../resources/js/fileManager.js"></script>
+	 <script>
+		setMax(3);
+	 </script>
 </body>
 </html>
