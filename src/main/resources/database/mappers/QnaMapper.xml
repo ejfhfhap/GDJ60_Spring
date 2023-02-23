@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.iu.s1.board.qna.QnaDAO">
+ 	<sql id="QnaCondition">
+ 		WHERE
+		<if test="kind == 'TITLE'">
+			TITLE LIKE '%' || #{search} || '%'
+		</if>
+		<if test="kind == 'CONTENTS'">
+			CONTENTS LIKE '%' || #{search} || '%'
+		</if>
+		<if test="kind == 'WRITER'">
+			WRITER LIKE '%' || #{search} || '%'
+		</if>
+ 	</sql>
+ 	
+ 	<select id="getQnaList" parameterType="Pager" resultType="QnaDTO">
+ 		SELECT * FROM (SELECT ROWNUM R,A.* 
+ 		FROM (
+ 			SELECT * FROM QNA A
+ 			<include refid="QnaCondition"></include>
+ 		))
+ 		WHERE R BETWEEN #{startRow} AND #{lastRow}
+ 	</select>
+ 	
+ 	<select id="getTotalCount" parameterType="Pager" resultType="Integer">
+ 		SELECT COUNT(NUM) FROM QNA
+ 		<include refid="QnaCondition"></include>
+ 	</select>
+ </mapper>
