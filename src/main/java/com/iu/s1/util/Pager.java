@@ -2,6 +2,15 @@ package com.iu.s1.util;
 
 public class Pager {
 	
+	// mapper에서 쓰기전용
+	private Integer bookNumber;
+	
+	public Integer getBookNumber() {
+		return bookNumber;
+	}
+	public void setBookNumber(Integer bookNumber) {
+		this.bookNumber = bookNumber;
+	}
 	//검색 종류(사용할 컬럼)
 	private String kind;
 	// 검색어
