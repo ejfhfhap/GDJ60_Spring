@@ -29,4 +29,15 @@
  		WHERE R BETWEEN #{startRow} AND #{lastRow}
  		ORDER BY NUM
  	</select>
+ 	
+ 	<!-- 상속 객체를 넘어주는걸로 만들었으면 MAPPER에서도 부모dto로 받아야함 -->
+ 	<insert id="setBoardAdd" parameterType="BbsDTO">
+ 		INSERT INTO NOTICE (NUM,TITLE,CONTENTS,WRITER,REGDATE,HIT)
+ 		VALUES(NOTICE_SEQ.NEXTVAL, #{title},#{contents},#{writer},sysdate,0)
+ 	</insert>
+ 	
+ 	<select id="getBoardDetail" parameterType="BoardDTO" resultType="NoticeDTO">
+ 		SELECT * FROM NOTICE WHERE NUM = #{num}
+ 	</select>
+ 	
  </mapper>
