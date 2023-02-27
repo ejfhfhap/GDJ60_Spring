@@ -1,6 +1,6 @@
 const btnAdd = document.getElementById("btnAdd");
 const fileList = document.getElementById("fileList");
-const fileBtn = document.getElementById('fileBtn');
+// const fileBtn = document.getElementById('fileBtn');
 
 let addCount = 0;
 let maxCount = 3;
@@ -30,28 +30,15 @@ btnAdd.addEventListener("click",()=>{
         inputType.value = 'file';
         let inputClass = document.createAttribute('class');
         inputClass.value = 'form-control';
-        // let inputId = document.createAttribute('id');
-        // inputId.value = 'files'
         let inputName = document.createAttribute('name');
         inputName.value = parm;
 
         input.setAttributeNode(inputType);
         input.setAttributeNode(inputClass);
-       // input.setAttributeNode(inputId);
         input.setAttributeNode(inputName);
 
-        let label = document.createElement('label');
-
-        let labelFor = document.createAttribute('for');
-        labelFor.value = 'files';
-        let labelText = document.createTextNode('이미지');
-        label.setAttributeNode(labelFor);
-        label.appendChild(labelText);
-
-        fileBtn.append(div);
+        fileList.append(div);
         div.append(input);
-        div.append(label);
-
 
         // x 버튼 추가하기
         let button = document.createElement('button');
@@ -61,24 +48,21 @@ btnAdd.addEventListener("click",()=>{
         parentId.value = 'files' + addCount;
         button.setAttributeNode(parentId);
         button.setAttributeNode(type);
-        let text = document.createTextNode('X');
-        button.append(text);
+        button.innerHTML = 'X';
 
-        fileBtn.append(button);
-    
-
+        div.append(button);
         addCount++;
     }else{
         alert("한번만 누르세요");
     }
 })
-fileBtn.addEventListener('click',(e)=>{
+fileList.addEventListener('click',(e)=>{
     console.log(e.target.getAttribute('data-file-index'))
     let parentId = document.getElementById(e.target.getAttribute('data-file-index'));
     let fileId = document.getElementById(e.target.id);
     if(parentId != null){
-        parentId.remove();
-        e.target.remove();
+        e.target.parentNode.remove();
+      //  parentId.remove();
         addCount--;
     }
 })

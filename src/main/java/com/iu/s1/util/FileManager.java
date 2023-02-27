@@ -12,8 +12,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class FileManager {
-	// file을 hdd에 저장
 	
+	//file hdd에 삭제
+	public boolean fileDelete(String path,String fileName)throws Exception {
+		File file = new File(path, fileName);
+		
+		return file.delete();
+	}
+	
+	// file을 hdd에 저장
 	public String fileSave(MultipartFile multipartFile, String path)throws Exception{
 		// 1. 파일을 어디에 저장 할지
 		// /resources/upload/bankBook/...

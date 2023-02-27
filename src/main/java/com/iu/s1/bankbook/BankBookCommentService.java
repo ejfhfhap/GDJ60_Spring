@@ -2,8 +2,11 @@ package com.iu.s1.bankbook;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.s1.board.BbsDTO;
 import com.iu.s1.board.BbsService;
@@ -21,6 +24,12 @@ public class BankBookCommentService implements BbsService{
 		pager.makeNum(bankBookCommentDAO.getTotalCount(pager));
 		
 		return bankBookCommentDAO.getBoardList(pager);
+	}
+
+	@Override
+	public int setBoardAdd(BbsDTO bbsDTO, MultipartFile[] files, HttpSession session) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override

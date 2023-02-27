@@ -35,13 +35,13 @@
 		          </fieldset>
 		          				
 				  <div id="fileList">
-						<div id = fileBtn>
-							<!-- <div class="mb-3" id = files+${i}>
+						<!-- <div id = fileBtn>
+							 <div class="mb-3" id = files+${i}>
 								<input type = "file" class="form-control" name="pic">
 								<label for="files">이미지</label>
 								<button type="button">X</button>
-							</div> -->
-						</div>
+							</div> 
+						</div> -->
 					<button type="button" id = "btnAdd">ADD</button>
 				  </div>
 

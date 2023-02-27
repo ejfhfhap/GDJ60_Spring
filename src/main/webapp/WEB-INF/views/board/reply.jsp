@@ -35,7 +35,16 @@
 		          		<legend class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">내용</legend>
 		          		 contents:<textarea name="contents" id="contents" rows="" cols=""></textarea>
 		          </fieldset>
-		          				
+		           <div id="fileList">
+						<!-- <div id = fileBtn>
+							 <div class="mb-3" id = files+${i}>
+								<input type = "file" class="form-control" name="pic">
+								<label for="files">이미지</label>
+								<button type="button">X</button>
+							</div> 
+						</div> -->
+					<button type="button" id = "btnAdd">ADD</button>
+				  </div>
 				  <!-- <div id="fileList">
 					<fieldset class="col-2">
 						<legend class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">파일선택</legend>
@@ -67,9 +76,9 @@
 	     </form>
      </div>
      <!-- <c:import url="../template/common_js.jsp"></c:import> -->
-	 <script src="../resources/js/fileManager.js"></script>
-	 <!-- <script>
-		setMax(3);
-	 </script>  -->
+	<script src="../resources/js/fileManager.js"></script>
+	 <script>
+		setMax(5);
+	 </script>
 </body>
 </html>

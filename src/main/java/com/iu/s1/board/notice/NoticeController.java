@@ -2,6 +2,8 @@ package com.iu.s1.board.notice;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,10 +51,10 @@ public class NoticeController {
 	}
 	
 	@PostMapping("/add")
-	public ModelAndView setBoardAdd(NoticeDTO noticeDTO, MultipartFile[] files)throws Exception{
+	public ModelAndView setBoardAdd(NoticeDTO noticeDTO, MultipartFile[] files,HttpSession httpSession)throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
 		
-		int result = noticeService.setBoardAdd(noticeDTO);
+		int result = noticeService.setBoardAdd(noticeDTO,files,httpSession);
 		String message = "등록 실패";
 		if(result > 0) {
 			message = "글이 등록 되었습니다";
@@ -74,6 +76,22 @@ public class NoticeController {
 		modelAndView.addObject("dto", boardDTO);
 		
 		modelAndView.setViewName("/board/detail");
+		return modelAndView;
+	}
+	
+	@PostMapping("/delete")
+	public ModelAndView setBoardDelete(NoticeDTO noticeDTO)throws Exception{
+		ModelAndView modelAndView = new ModelAndView();
+		
+		int result = noticeService.setBoardDelete(noticeDTO);
+		if(result > 0) {
+			modelAndView.addObject("result", "삭제 성공");
+		}else {
+			modelAndView.addObject("result", "삭세 실패");
+		}
+		
+		modelAndView.addObject("url", "./list");
+		modelAndView.setViewName("common/result");
 		return modelAndView;
 	}
 }

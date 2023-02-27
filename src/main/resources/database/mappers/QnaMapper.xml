@@ -32,9 +32,34 @@
  		<include refid="QnaCondition"></include>
  	</select>
  	
- 	<select id="getBoardDetail" parameterType="BoardDTO" resultType="QnaDTO">
- 		SELECT * FROM QNA WHERE NUM = #{num}
+ 	<select id="getBoardDetail" parameterType="BoardDTO" resultMap="getBoardDetailResult">
+ 		SELECT * FROM QNA Q1 
+		LEFT JOIN QNAFILES Q2 ON Q1.NUM = Q2.NUM
+		WHERE Q1.NUM = #{num} 	
  	</select>
+ 	
+ 	<resultMap type="QnaDTO" id="getBoardDetailResult">
+ 		<id column="num" property="num"/>
+ 		<result column="title" property="title"/>
+ 		<result column="contents" property="contents"/>
+ 		<result column="writer" property="writer"/>
+ 		<result column="regDate" property="regDate"/>
+ 		<result column="hit" property="hit"/>
+ 		<result column="depth" property="depth"/>
+ 		
+ 		<!-- List<BoardFileDTO> boardFileDTOs; ofType = 제너릭 타입 반복문 돌아서 넣어줌-->
+ 		<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
+ 			<id column="fileNum" property="fileNum"/>
+ 			<result column="fileName" property="fileName"/>
+ 			<result column="oriName" property="oriName"/>
+ 		</collection>
+ 		
+ 	</resultMap>
+ 	
+ 	<delete id="setBoardDelete" parameterType="BbsDTO">
+ 		DELETE QNA WHERE num = #{num}
+ 	</delete>
+ 	
  	
  	<insert id="setBoardAdd" parameterType="BbsDTO">
  		<selectKey order="BEFORE" keyProperty="num" resultType="Integer">
@@ -42,6 +67,13 @@
  		</selectKey>
  		INSERT INTO QNA     
  		VALUES(#{num},#{title},#{contents},#{writer},sysdate,0,#{num},0,0)
+ 	</insert>
+ 	
+ 	<insert id="setBoardFileAdd" parameterType="BoardFileDTO">
+ 		<selectKey order="BEFORE" keyProperty="fileNum" resultType="Integer">
+ 			SELECT QNA_SEQ.NEXTVAL FROM DUAL
+ 		</selectKey>
+ 		INSERT INTO QNAFILES VALUES(#{fileNum},#{num},#{fileName},#{oriName})
  	</insert>
  	
  	<update id="setStepUpdate" parameterType="QnaDTO">
@@ -53,4 +85,8 @@
  		INSERT INTO QNA     
  		VALUES(QNA_SEQ.NEXTVAL,#{title},#{contents},#{writer},sysdate,0,#{ref},#{step},#{depth})
  	</insert>
+ 	
+ 	<select id="getBoardFileList" parameterType="BbsDTO" resultType="BoardFileDTO">
+ 		SELECT * FROM QNAFILES WHERE NUM = #{num}
+ 	</select>
  </mapper>
