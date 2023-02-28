@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.s1.board.BbsDTO;
 import com.iu.s1.board.BoardDTO;
+import com.iu.s1.board.BoardFileDTO;
 import com.iu.s1.util.Pager;
 
 @Controller
@@ -115,6 +116,18 @@ public class QnaController {
 		modelAndView.addObject("url", "./list");
 		
 		modelAndView.setViewName("/common/result");
+		return modelAndView;
+	}
+	
+	@GetMapping("/fileDown")
+	public ModelAndView getFileDown(BoardFileDTO boardFileDTO)throws Exception{
+		ModelAndView modelAndView = new ModelAndView();
+		
+		boardFileDTO = qnaService.getBoardFileDetail(boardFileDTO);
+		modelAndView.addObject("boardFile", boardFileDTO);
+		
+		// abstarctview를 상속받은 애를 먼저 찾아감
+		modelAndView.setViewName("fileDownView");
 		return modelAndView;
 	}
 }
