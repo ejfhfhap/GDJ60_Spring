@@ -65,9 +65,13 @@ public class MemberController {
 		modelAndView.setViewName("/member/memberLogin");
 		return modelAndView;
 	}
+	
 	@RequestMapping(value = "/memberLogin", method = RequestMethod.POST)
 	public ModelAndView memberLoginPost(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
+		System.out.println(memberDTO.getId());
+		
+		
 		memberDTO = memberService.getMemberLogin(memberDTO);
 		
 //		session table를 만들고 사용자한테 보냄
@@ -80,7 +84,7 @@ public class MemberController {
 		}else {
 			modelAndView.setViewName("redirect: ../");
 		}
-		
+		System.out.println(memberDTO.getId());
 		return modelAndView;
 	}
 	

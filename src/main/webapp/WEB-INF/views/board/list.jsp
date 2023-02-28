@@ -38,7 +38,8 @@
 							
 							<a href = "./detail?num=${dto.num}">${dto.title}</a>
 						</td>
-						<td>${dto.writer}</td>
+						<c:if test="${boardName eq 'notice'}"><td>관리자</td></c:if>
+						<c:if test="${boardName eq 'qna'}"><td>${dto.writer}</td></c:if>
 						<td>${dto.regDate}</td>
 						<td>${dto.hit}</td>
 					</tr>
@@ -101,9 +102,22 @@
 						  </div>
 					</form>
 				</div>
-				<div class="row">
-					<a href="./add" class="btn btn-primary">글 작성</a>
-				</div>
+
+				<c:if test="${not empty member}">
+				
+					<c:if test="${member.roleDTO.roleName eq 'ADMIN' and boardName eq 'notice'}">
+						<div class="row">
+							<a href="./add" class="btn btn-primary">글 작성</a>
+						</div>
+					</c:if>
+					<c:if test="${boardName eq 'qna'}">
+						<div class="row">
+							<a href="./add" class="btn btn-primary">글 작성</a>
+						</div>					
+					</c:if>
+
+				</c:if>
+				
 <c:import url="../template/common_js.jsp"></c:import>
 <script src="../resources/js/pageing.js"></script>
 </body>

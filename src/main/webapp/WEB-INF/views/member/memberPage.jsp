@@ -19,6 +19,7 @@
 		 <h2>address: ${dto.address}</h2>
 	     <h2>phone: ${dto.phone}</h2>
 		 <h2>email: ${dto.email}</h2>
+		 <h2>grade: ${dto.roleDTO.roleName }</h2>
 	 	 <a href = "./memberUpdate" class = "btn btn-info">정보수정</a>
 	 </div>
  </div>

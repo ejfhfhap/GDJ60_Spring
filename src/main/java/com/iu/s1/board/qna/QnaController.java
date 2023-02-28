@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.iu.s1.board.BbsDTO;
 import com.iu.s1.board.BoardDTO;
 import com.iu.s1.board.BoardFileDTO;
+import com.iu.s1.member.MemberDTO;
 import com.iu.s1.util.Pager;
 
 @Controller
@@ -26,6 +27,8 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
+	@Autowired
+	private HttpSession httpSession;
 	
 	// 모든 jsp에 변수를 mv에 담아서공통적으로 보낼것
 	@ModelAttribute("boardName")
@@ -49,7 +52,14 @@ public class QnaController {
 	@GetMapping("/add")
 	public ModelAndView setBoardAdd()throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/board/add");
+		
+		MemberDTO memberDTO = (MemberDTO) httpSession.getAttribute("member");
+		if(memberDTO == null) {
+			modelAndView.setViewName("redirect: ./list");
+		}else {
+			modelAndView.setViewName("/board/add");
+		}
+		
 		return modelAndView;
 	}
 	

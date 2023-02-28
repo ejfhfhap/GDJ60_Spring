@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.iu.s1.board.BbsDTO;
 import com.iu.s1.board.BoardDTO;
 import com.iu.s1.board.BoardFileDTO;
+import com.iu.s1.member.MemberDTO;
 import com.iu.s1.util.Pager;
 
 @Controller
@@ -26,6 +27,8 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	// private BbsService noticeService; 도 가능함
+	@Autowired
+	private HttpSession httpSession;
 	
 	@ModelAttribute("boardName")
 	public String getBoardName() {
@@ -37,6 +40,7 @@ public class NoticeController {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		List<BbsDTO> list = noticeService.getBoardList(pager);
+		
 		modelAndView.addObject("list", list);
 		modelAndView.setViewName("/board/list");
 		
@@ -48,6 +52,14 @@ public class NoticeController {
 	public ModelAndView setBoardAdd()throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/board/add");
+		
+		MemberDTO memberDTO = (MemberDTO) httpSession.getAttribute("member");
+		if(memberDTO == null || memberDTO.getRoleDTO().getRoleName() != "ADMIN") {
+			modelAndView.setViewName("redirect: ./list");
+		}else {
+			modelAndView.setViewName("/board/add");
+		}
+		
 		return modelAndView;
 	}
 	

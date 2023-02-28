@@ -15,7 +15,7 @@ public class TestController {
 	private NoticeDAO noticeDAO;
 	
 	
-	@GetMapping("test")
+	@GetMapping("/test")
 	public ModelAndView test() throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
 		

@@ -26,13 +26,16 @@
 			<a href="./reply?num=${dto.num}" class="btn btn-danger">답글</a>
 		</c:if>
 		
-		<form action="./update" method="get" id="frm">
-			<input type="hidden" name="num" value="${dto.num}" >
-			<!-- action 바꾸기 get -->
-			<button id="update" type="submit" class="btn btn-primary">UPDATE</button>
-			<!-- post -->
-			<button id="delete" type="button" class="btn btn-info">DELETE</button>
-		</form>
+		
+		<c:if test="${dto.writer eq member.id }">
+			<form action="./update" method="get" id="frm">
+				<input type="hidden" name="num" value="${dto.num}" >
+				<!-- action 바꾸기 get -->
+				<button id="update" type="submit" class="btn btn-primary">UPDATE</button>
+				<!-- post -->
+				<button id="delete" type="button" class="btn btn-info">DELETE</button>
+			</form>
+		</c:if>
 		
 	</div>
 </div>

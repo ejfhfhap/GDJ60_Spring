@@ -9,15 +9,16 @@ public class MemberDTO {
 	private String address;
 	private String phone;
 	private String email;
-	private RoleDTO roleDTOs;
+	private RoleDTO roleDTO;
 	
 	
 
-	public RoleDTO getRoleDTOs() {
-		return roleDTOs;
+	
+	public RoleDTO getRoleDTO() {
+		return roleDTO;
 	}
-	public void setRoleDTOs(RoleDTO roleDTOs) {
-		this.roleDTOs = roleDTOs;
+	public void setRoleDTO(RoleDTO roleDTO) {
+		this.roleDTO = roleDTO;
 	}
 	public String getId() {
 		return id;

@@ -37,7 +37,7 @@
 			   </div>
 
 			   <label for="inputPw2" class="form-label">PW</label>
-			   <input name = "pw" type="password" id="inputPw2" class="form-control" aria-describedby="pwHelpBlock">
+			   <input type="password" id="inputPw2" class="form-control" aria-describedby="pwHelpBlock">
 			   <div id="rePwMsg" class="form-text">
 				 pw를 한번 더 입력 해 주세요
 			   </div>
