@@ -15,17 +15,39 @@
  	<insert id="setMemberRoleAdd" parameterType="MemberDTO">
  		INSERT INTO MEMBER_ROLE VALUES(#{id},(SELECT ROLENUM FROM ROLE WHERE ROLENAME = 'MEMBER'))	
  	</insert>
- 	<select id="getMemberLogin" parameterType="MemberDTO" resultType="MemberDTO">
- 		SELECT * FROM MEMBER WHERE ID = #{id}
+ 	
+ 	
+ 	<select id="getMemberLogin" parameterType="MemberDTO" resultMap="getMemberJoinRole">
+ 		SELECT M.*,R.* FROM MEMBER M 
+		JOIN MEMBER_ROLE MR ON M.ID = MR.ID
+		JOIN ROLE R ON MR.ROLENUM  = R.ROLENUM 
+		WHERE M.ID = #{id}
  	</select>
+ 	<resultMap type="MemberDTO" id="getMemberJoinRole">
+ 		<id column="id" property="id"/>
+ 		<result column="pw" property="pw"/>
+ 		<result column="name" property="name"/>
+ 		<result column="address" property="address"/>
+ 		<result column="phone" property="phone"/>
+ 		<result column="email" property="email"/>
+ 		<association property="roleDTO" javaType="RoleDTO">
+ 			<id column="roleNum" property="roleNum"/>
+ 			<result column="roleName" property="roleName"/>
+ 		</association>
+ 	</resultMap>
+ 	
+ 	
  	<update id="setMemberUpdate" parameterType="MemberDTO">
  		UPDATE MEMBER SET NAME = #{name}, ADDRESS = #{address}, PHONE = #{phone}, EMAIL = #{email}
  		WHERE ID = #{id}
  	</update>
  </mapper>
- 	<!-- private String id;
+ 		<!-- private String id;
 	private String pw;
 	private String name;
 	private String address;
 	private String phone;
-	private String email; -->
+	private String email;
+	private RoleDTO roleDTOs; -->
+		<!-- private Integer roleNum;
+	private String roleName; -->

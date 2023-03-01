@@ -108,11 +108,8 @@ inputAddress.addEventListener("blur",()=>{
     }
 })
 btn.addEventListener("click",()=>{
-    let checkAll = 1;
-    for(let i = 0;i<check.length;i++){
-        if(check[i] == 0)checkAll = 0;
-    }
-    if(checkAll == 1){
+    console.log(check)
+    if(!check.includes(0)){
         // btn.type = "submit";
         formBtn.submit()
     }else{

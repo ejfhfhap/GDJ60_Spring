@@ -21,7 +21,7 @@
  	  		<div class="row pb-5">
 			 	  <fieldset class="col-1">
 			 	 		<legend class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">작성자</legend>
-			 	        writer: <input type="text" name="writer" id="writer" placeholder="">
+			 	        writer: <input type="text" name="writer" id="writer" placeholder="" readonly="readonly" value="${member.id}">
 			 	  </fieldset>
 			 
 		          <fieldset class="col-1 ms-5">
