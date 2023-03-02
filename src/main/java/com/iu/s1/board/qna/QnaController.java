@@ -53,12 +53,7 @@ public class QnaController {
 	public ModelAndView setBoardAdd()throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
 		
-		MemberDTO memberDTO = (MemberDTO) httpSession.getAttribute("member");
-		if(memberDTO == null) {
-			modelAndView.setViewName("redirect: ./list");
-		}else {
-			modelAndView.setViewName("/board/add");
-		}
+		modelAndView.setViewName("/board/add");
 		
 		return modelAndView;
 	}
@@ -138,6 +133,17 @@ public class QnaController {
 		
 		// abstarctview를 상속받은 애를 먼저 찾아감
 		modelAndView.setViewName("fileDownView");
+		return modelAndView;
+	}
+	
+	@GetMapping("/update")
+	public ModelAndView setBoardUpdate(BoardDTO boardDTO)throws Exception{
+		ModelAndView modelAndView = new ModelAndView();
+		
+		boardDTO = qnaService.getBoardDetail(boardDTO);
+		modelAndView.addObject("dto", boardDTO);
+		
+		modelAndView.setViewName("/board/update");
 		return modelAndView;
 	}
 }

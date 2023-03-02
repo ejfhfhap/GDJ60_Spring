@@ -36,12 +36,33 @@
 		<!-- 어떤 url이 왔을때 어떤 인터셉트를 줄지 -->
 		<interceptor>
 			<mapping path="/qna/*"/>
+			<mapping path="/member/memberPage"/>
+			<mapping path="/member/memberUpdate"/>
+			
 			<!-- url제외 하는 것 -->
 			<exclude-mapping path="/qna/list"/>
 			<beans:ref bean="memberCheckInterceptor"/>
 		</interceptor>
 		
+		<interceptor>
+			<mapping path="/qna/update"/>
+			<mapping path="/notice/update"/>
+			<mapping path="/qna/delete"/>
+			<mapping path="/notice/delete"/>
+			<beans:ref bean="ownerCheckInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/notice/*"/>
+			<exclude-mapping path="/notice/list"/>
+			<exclude-mapping path="/notice/detail"/>
+			<beans:bean class="com.iu.s1.interceptor.AdminCheckInterceptor"></beans:bean>
+		</interceptor>
+		
 	</interceptors>
+	
+	<!-- 라이브러리로 받은것들은 꼭 이렇게 사용해야함!! -->
+	<!--  <beans:bean class="com.iu.s1.interceptor.AdminCheckInterceptor" id="adminCheckInterceptor"></beans:bean> -->
 	
 	<context:component-scan base-package="com.iu.s1" />	
 </beans:beans>

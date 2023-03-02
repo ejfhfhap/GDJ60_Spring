@@ -53,13 +53,6 @@ public class NoticeController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/board/add");
 		
-		MemberDTO memberDTO = (MemberDTO) httpSession.getAttribute("member");
-		if(memberDTO == null || memberDTO.getRoleDTO().getRoleName() != "ADMIN") {
-			modelAndView.setViewName("redirect: ./list");
-		}else {
-			modelAndView.setViewName("/board/add");
-		}
-		
 		return modelAndView;
 	}
 	
@@ -116,6 +109,17 @@ public class NoticeController {
 		modelAndView.addObject("boardFile", boardFileDTO);
 		modelAndView.setViewName("fileDownView");
 		
+		return modelAndView;
+	}
+	
+	@GetMapping("/update")
+	public ModelAndView setBoardUpdate(BoardDTO boardDTO)throws Exception{
+		ModelAndView modelAndView = new ModelAndView();
+		
+		boardDTO = noticeService.getBoardDetail(boardDTO);
+		modelAndView.addObject("dto", boardDTO);
+		
+		modelAndView.setViewName("/board/update");
 		return modelAndView;
 	}
 }
