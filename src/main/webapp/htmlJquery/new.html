@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>new Window</h1>
+    <button id = "close">Close</button>
+
+    <script>
+        const cl = document.querySelector('#close');
+        cl.addEventListener('click',()=>{
+            // opener 나를 열어준 웹브라우저 윈도우 객체 
+            opener.location.reload();
+            // opener.close();
+            
+            // 윈도우 창 닫기
+            close();
+        })
+    </script>
+</body>
+</html>
