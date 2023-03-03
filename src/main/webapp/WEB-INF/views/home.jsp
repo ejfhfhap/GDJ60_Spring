@@ -38,10 +38,11 @@
 	</div>
 </div>
 
-<div>
- 	<h1>${member.name}</h1>
+<div class="container-fluid my-5 " id="noticeList">
+
 </div>
 
+	<script src="/resources/js/noticeTopFive.js"></script>
 	<c:import url="./template/common_js.jsp"></c:import>
 </body>
 </html>

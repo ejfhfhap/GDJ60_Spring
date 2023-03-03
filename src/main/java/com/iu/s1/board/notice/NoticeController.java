@@ -35,6 +35,17 @@ public class NoticeController {
 		return "notice";
 	}
 	
+	@GetMapping("/listTop")
+	public ModelAndView getListTop(Pager pager) throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		pager.setPerPage(5);
+		List<BbsDTO> dtos = noticeService.getBoardList(pager);
+		modelAndView.addObject("dtos", dtos);
+		modelAndView.setViewName("/common/noticeResult");
+		return modelAndView;
+	}
+	
 	@RequestMapping(value =  "/list",method = RequestMethod.GET)
 	public ModelAndView getBoardList(Pager pager) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();

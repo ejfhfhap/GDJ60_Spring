@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
 // 500번대 백엔드 에러의 예외를 전문적으로 처리하는 컨트롤러
-@ControllerAdvice
+// @ControllerAdvice
 public class ExceptionController {
 	// ---------------------------------------
 	// Nullpoint 에러가 발생했을때 여기로 옴

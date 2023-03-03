@@ -32,14 +32,14 @@
 		<beans:property name="order" value="0"></beans:property>
 	</beans:bean>
 	
-	<interceptors>
-		<!-- 어떤 url이 왔을때 어떤 인터셉트를 줄지 -->
+<!-- 	<interceptors>
+		어떤 url이 왔을때 어떤 인터셉트를 줄지
 		<interceptor>
 			<mapping path="/qna/*"/>
 			<mapping path="/member/memberPage"/>
 			<mapping path="/member/memberUpdate"/>
 			
-			<!-- url제외 하는 것 -->
+			url제외 하는 것
 			<exclude-mapping path="/qna/list"/>
 			<beans:ref bean="memberCheckInterceptor"/>
 		</interceptor>
@@ -59,7 +59,7 @@
 			<beans:bean class="com.iu.s1.interceptor.AdminCheckInterceptor"></beans:bean>
 		</interceptor>
 		
-	</interceptors>
+	</interceptors> -->
 	
 	<!-- 라이브러리로 받은것들은 꼭 이렇게 사용해야함!! -->
 	<!--  <beans:bean class="com.iu.s1.interceptor.AdminCheckInterceptor" id="adminCheckInterceptor"></beans:bean> -->

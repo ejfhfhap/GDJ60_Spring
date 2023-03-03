@@ -21,8 +21,37 @@ let check = [0,0,0,0,0,0,0];
 console.log(1231999);
 
 inputId.addEventListener("blur",()=>{
-    // 비어있으면 안됨 tag추가
-    let id = inputId.value;
+        // 비어있으면 안됨 tag추가
+        let id = inputId.value;
+    console.log(id.value);
+    // 중복검사
+    let xhttp = new XMLHttpRequest();
+    // method, url 정보
+    xhttp.open("POST","./memberIdCheck");
+    // header
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    // 요청 발생 파라미터 같이 보내기
+    xhttp.send("id=" + id);
+    
+    // 응답처리
+    xhttp.onreadystatechange = ()=>{
+        if(xhttp.readyState == XMLHttpRequest.DONE && xhttp.status == 200){
+            let idUnique = xhttp.responseText.trim();
+            console.log(idUnique);
+            if(idUnique){
+                idMsg.innerText="사용 가능한 아이디 입니다";
+            }else{
+                idMsg.innerText="중복된 아이디 입니다";
+            }
+        }
+        if(xhttp.status != 200){
+
+        }
+    }
+
+
+
     if(id.length == 0){
         check[0] = 0;
         idMsg.innerText="값을 넣어주세요";

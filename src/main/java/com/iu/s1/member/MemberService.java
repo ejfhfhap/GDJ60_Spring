@@ -33,7 +33,15 @@ public class MemberService {
 	public MemberDTO getMemberDetail(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getMemberDetail(memberDTO);
 	}
-	
+	public boolean getMemberIdCheck(MemberDTO memberDTO) throws Exception {
+		
+		memberDTO = memberDAO.getMemberLogin(memberDTO);
+		if(memberDTO == null) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 	public MemberDTO getMemberLogin(MemberDTO memberDTO)throws Exception{
 		
 		MemberDTO memberDTO2 = memberDAO.getMemberLogin(memberDTO);

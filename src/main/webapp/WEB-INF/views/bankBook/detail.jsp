@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
 	<h2>detail page</h2>
@@ -30,5 +31,23 @@
 	</c:if>
 	
 	<a href ="./list">목록으로</a>
+
+	<!--  작성자 내용 작성일 -->
+	<div class="my-5" id="commentList"> 
+
+	</div>
+
+	<div>
+		<input type="hidden" id="bookNumber" value="${bankBookDTO.bookNumber}">
+		<div class="mb-3">
+			<textarea class="form-control" id="contents" rows="3"></textarea>
+		</div>
+		<button type="submit" class="btn btn-primary mb-3" id="submit">댓글작성</button>
+	</div>
+
+
+
+	<script src="/resources/js/bankBookReplay.js"></script>
+	<c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>
