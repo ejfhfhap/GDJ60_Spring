@@ -47,6 +47,32 @@
 		<button type="button" class="btn btn-primary mb-3" id="submit">댓글작성</button>
 	</div>
 
+	<!-- Button trigger modal
+	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contentModal">
+		Launch demo modal
+	</button> -->
+	
+	<!-- Modal -->
+	<div class="modal fade" id="contentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+			<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="form-floating">
+					<textarea class="form-control" placeholder="Leave a comment here" id="contentss"></textarea>
+					<label for="contentss">Comments</label>
+				  </div>
+			</div>
+			<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="modalClose">Close</button>
+			<button type="button" class="btn btn-primary" id="contentsConfirm" data-comment-num ="">확인</button>
+			</div>
+		</div>
+		</div>
+	</div>
 
 
 	<script src="/resources/js/bankBookReplay.js"></script>

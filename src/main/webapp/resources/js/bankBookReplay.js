@@ -2,7 +2,8 @@ const submit = document.getElementById('submit');
 const bookNumber = document.getElementById('bookNumber');
 const contents = document.getElementById('contents');
 const commentList = document.getElementById('commentList');
-
+const contentsConfirm = document.getElementById('contentsConfirm');
+const modalClose = document.getElementById('modalClose');
 
 function getList(page){
     let xhttp = new XMLHttpRequest();
@@ -36,10 +37,11 @@ function updateComment(num,content){
             let result = xhttp.responseText.trim();
             if(result > 0){
                 alert("수정 성공!!");
+                getList(1);
+                modalClose.click();
             }else{
                 alert("수정 실패..")
             }
-            getList(1);
         }
     }
 }
@@ -64,24 +66,19 @@ commentList.addEventListener('click',(e)=>{
     if(e.target.classList.contains('viewUpdateForm')){
         let commentNum = e.target.getAttribute('data-commentNum');       
         let contentInput = document.getElementById('content' + commentNum);
-        console.log(contentInput);
-        contentInput.firstChild.removeAttribute('readonly');
-
-        let okBtn = document.createElement('button');
-        let attr = document.createAttribute('class');
-        attr.value = "btn btn-primary";
-        okBtn.setAttributeNode(attr);
-        okBtn.innerText = "확인";
-        contentInput.append(okBtn);
-        
-        okBtn.addEventListener('click',()=>{
-         //   console.log(contentInput.firstChild.value);
-        //    console.log(commentNum);
-            let content = contentInput.firstChild.value;
-            updateComment(commentNum,content);
-        })
+        let contentsTextArea = document.getElementById("contentss");
+        contentsTextArea.innerText = contentInput.innerText;
+        contentsConfirm.setAttribute("data-comment-num",commentNum);
     }
 
+})
+contentsConfirm.addEventListener('click',()=>{
+    console.log('update post contentsConfirm');
+    let updateContents = document.getElementById("contentss").value;
+    let num = contentsConfirm.getAttribute('data-comment-num');
+    console.log(num,updateContents);
+    updateComment(num,updateContents);
+    
 })
 
 // 등록 버튼 관리

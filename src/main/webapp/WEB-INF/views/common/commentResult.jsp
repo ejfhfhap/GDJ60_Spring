@@ -8,7 +8,7 @@
 			<c:forEach items="${dtos}" var="dto" varStatus="i">
 				<%-- <c:if test="${i.first }">sadfsdf</c:if> --%>
 				<tr>
-					<td id="content${dto.num}"><textarea readonly>${dto.contents}</textarea></td>
+					<td id="content${dto.num}">${dto.contents}</td>
 					<td>${dto.regDate}</td>
 					<td>${dto.writer}</td>
 					<td>
@@ -20,12 +20,10 @@
 						<!-- <c:if test="${member.id eq dto.writer}">
 							<button type="button" class="btn btn-danger" data-commentId-del="${dto.num}">UPDATE</button>
 						</c:if> -->
-						<button type="button" class="btn btn-danger viewUpdateForm" data-commentNum = "${dto.num}">UPDATE</button>
+						<button type="button" class="btn btn-danger viewUpdateForm" data-commentNum = "${dto.num}" data-bs-toggle="modal" data-bs-target="#contentModal">UPDATE</button>
 					</td>
 				</tr>
 
-				<tr id="updateForm${i.index}">
-				</tr>
 
 
 			</c:forEach>
