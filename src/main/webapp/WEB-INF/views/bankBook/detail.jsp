@@ -9,6 +9,7 @@
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
+
 	<h2>detail page</h2>
 	
 	<c:if test="${not empty bankBookDTO.bookNumber}">
@@ -17,6 +18,7 @@
 		<h2>bookRate = ${bankBookDTO.bookRate}</h2>
 		<h2>bookSale = ${bankBookDTO.bookSale}</h2>
 		<h2>bookDetail = ${bankBookDTO.bookDetail}</h2>
+		
 		<div>
 			<c:if test="${not empty bankBookDTO.bankBookImgDTO}">
 				<img src="../resources/upload/bankBook/${bankBookDTO.bankBookImgDTO.fileName}">
@@ -42,7 +44,7 @@
 		<div class="mb-3">
 			<textarea class="form-control" id="contents" rows="3"></textarea>
 		</div>
-		<button type="submit" class="btn btn-primary mb-3" id="submit">댓글작성</button>
+		<button type="button" class="btn btn-primary mb-3" id="submit">댓글작성</button>
 	</div>
 
 

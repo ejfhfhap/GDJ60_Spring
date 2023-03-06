@@ -33,4 +33,10 @@
  	<insert id="setBoardAdd" parameterType="BankBookCommentDTO">
  		INSERT INTO BankBookComment VALUES(BANKBOOK_SEQ.NEXTVAL,#{bookNumber},#{contents},sysdate,#{writer})
  	</insert>
+ 	<delete id="setBoardDelete" parameterType="BankBookCommentDTO">
+ 		DELETE BANKBOOKCOMMENT WHERE NUM = #{num}
+ 	</delete>
+ 	<update id="setBoardUpdate" parameterType="BankBookCommentDTO">
+ 		UPDATE BANKBOOKCOMMENT SET CONTENTS = #{contents} WHERE NUM = #{num}
+ 	</update>
  </mapper>

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,7 +44,7 @@ public class BankBookCommentController {
 		//MemberDTO memberDTO = (MemberDTO) httpSession.getAttribute("member");
 		//bankBookCommentDTO.setWriter(memberDTO.getId());
 		
-		bankBookCommentDTO.setWriter("dlwngud123");
+		bankBookCommentDTO.setWriter("dlwngud_member123");
 		System.out.println(bankBookCommentDTO.getContents());
 		System.out.println(bankBookCommentDTO.getWriter());
 		int result = bankBookCommentService.setBoardAdd(bankBookCommentDTO);
@@ -64,6 +65,32 @@ public class BankBookCommentController {
 		modelAndView.addObject("dtos", dtos);
 		modelAndView.setViewName("/common/commentResult");
 		
+		return modelAndView;
+	}
+	
+	@PostMapping("/delete")
+	public ModelAndView setBoardDelete(BankBookCommentDTO bankBookCommentDTO) throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		System.out.println(bankBookCommentDTO.getNum());
+		int result = bankBookCommentService.setBoardDelete(bankBookCommentDTO);
+		
+		modelAndView.addObject("result", result);
+		modelAndView.setViewName("/common/ajaxResult");
+		return modelAndView;
+	}
+	
+	@PostMapping("/update")
+	public ModelAndView setBoardUpdate(BankBookCommentDTO bankBookCommentDTO)throws Exception{
+		ModelAndView modelAndView = new ModelAndView();
+		
+		System.out.println(bankBookCommentDTO.getNum());
+		System.out.println(bankBookCommentDTO.getContents());
+		int result = bankBookCommentService.setBoardUpdate(bankBookCommentDTO);
+		System.out.println(result);
+		
+		modelAndView.addObject("result", result);
+		modelAndView.setViewName("/common/ajaxResult");
 		return modelAndView;
 	}
 }
