@@ -14,7 +14,8 @@ function getList(page){
         return response.text();
     }).then((result)=>{
         result = result.trim();
-        commentList.innerHTML = result;
+        $('#commentList').html(result);
+     //   commentList.innerHTML = result;
     }).catch(()=>{
         alert('리스트 에러');
     })
@@ -75,6 +76,7 @@ function updateComment(num,content){
         if(res > 0){
             alert('업데이트 완료');
             getList(1);
+            $('#modalClose').click();
         }else{
             alert('업데이트 실패');
         }
@@ -104,40 +106,85 @@ function updateComment(num,content){
 getList(1);
 
 // 댓글 페이지 관리
-commentList.addEventListener('click',(e)=>{
-    let page = e.target.getAttribute('data-board-page');
-    console.log(e.target);
+// $('#t1').on({
+//     'click':()=>{
+//         console.log('클릭함');
+//     },
+//     'blur': ()=>{
+//         console.log('입력완료');
+//     }
+// })
 
-    if(page != null){
-        e.preventDefault();
-       // console.log(e.target);
-        getList(page);
+$('#commentList').on({
+    'click .page':()=>{
+        console.log('jhiihi');
+    },
+    'blur':()=>{
+        console.log('blur');
     }
-    if(e.target.classList.contains('del')){
-        let del= e.target.getAttribute('data-commentId-del');
-        deleteComment(commentId);
-        getList(1);
-    }
-    if(e.target.classList.contains('viewUpdateForm')){
-        let commentNum = e.target.getAttribute('data-commentNum');       
-        let contentInput = document.getElementById('content' + commentNum);
-        let contentsTextArea = document.getElementById("contentss");
-        contentsTextArea.innerText = contentInput.innerText;
-        contentsConfirm.setAttribute("data-comment-num",commentNum);
-    }
-
 })
-contentsConfirm.addEventListener('click',()=>{
+
+$('#commentList').on('click','.page',(e)=>{
+      e.preventDefault();
+       let page = $(e.target).attr('data-board-page');
+        getList(page);
+})
+$('#commentList').on('click','.del',(e)=>{
+    let del= $(e.target).attr('data-commentId-del');
+    deleteComment(commentId);
+    getList(1);
+})
+$('#commentList').on('click','.viewUpdateForm',(e)=>{
+    let commentNum = $(e.target).attr('data-commentNum');    
+    // let contentInput = document.getElementById('content' + commentNum);
+    // let contentsTextArea = document.getElementById("contentss");
+    $('#contentss').html($('#content' + commentNum).html());
+    // contentsTextArea.innerText = contentInput.innerText;
+    $('#contentsConfirm').attr("data-comment-num",commentNum)
+  //  contentsConfirm.setAttribute("data-comment-num",commentNum);
+})
+//------------------
+// $('#commentList').on('click',(e)=>{
+
+//     console.log(e.target);
+
+//     if(e.target.classList.contains('page')){
+//         e.preventDefault();
+//        let page = $(e.target).attr('data-board-page');
+//         getList(page);
+//     }
+
+//     if(e.target.classList.contains('del')){
+//         let del= $(e.target).attr('data-commentId-del');
+//         deleteComment(commentId);
+//         getList(1);
+//     }
+//     if(e.target.classList.contains('viewUpdateForm')){
+//         let commentNum = e.target.getAttribute('data-commentNum');       
+//         let contentInput = document.getElementById('content' + commentNum);
+//         let contentsTextArea = document.getElementById("contentss");
+//         contentsTextArea.innerText = contentInput.innerText;
+
+//         contentsConfirm.setAttribute("data-comment-num",commentNum);
+//     }
+
+// })
+
+//--------------------------------------
+
+$('#contentsConfirm').on('click',()=>{
     console.log('update post contentsConfirm');
-    let updateContents = document.getElementById("contentss").value;
-    let num = contentsConfirm.getAttribute('data-comment-num');
+  
+    let num = $('#contentsConfirm').attr('data-comment-num');
+    let updateContents = $('#contentss').val();
+  //  let updateContents = document.getElementById("contentss").value;
+   // let num = contentsConfirm.getAttribute('data-comment-num');
     console.log(num,updateContents);
     updateComment(num,updateContents);
-    
 })
 
 // 등록 버튼 관리
-submit.addEventListener('click',()=>{
+$('#submit').click(()=>{
 
     // js에서 사용 할 가상의 폼태그
     const form = new FormData(); // <form></form>
@@ -147,7 +194,7 @@ submit.addEventListener('click',()=>{
 
     fetch('/bankBookComment/add',{
         method:'POST',
-      //  headers:{"Content-type" : "application/x-www-form-urlencoded"},
+      //  헤더 지워야함 headers:{"Content-type" : "application/x-www-form-urlencoded"},
         body:form
         // body:"bookNumber=" + bookNumber.value +"&contents=" +contents.value
     }).then((response)=>{
@@ -183,3 +230,51 @@ submit.addEventListener('click',()=>{
     //     }
     // }
 })
+
+
+
+// 테스트 후 삭제할 영역----------------------------------
+
+// $('#b1').click(()=>{
+//     console.log($('#t1').val())
+// });
+
+// $('#t1').blur(()=>{
+//     console.log($('#t1').val())
+// })
+
+// $('#b1').on('click',()=>{
+
+// })
+
+$('#t1').on({
+    'click':()=>{
+        console.log('클릭함');
+    },
+    'blur': ()=>{
+        console.log('입력완료');
+    }
+})
+
+$('#commentList').on('click',".update",()=>{
+
+})
+
+// const chs = document.getElementsByClassName('ch');
+// for(let ch of chs){
+//     ch.addEventListener('click',()=>{
+
+//     })
+// }
+
+// $(".ch").click(function(e){
+//     console.log(e);
+//     console.log($(this).val());
+// })
+
+$(".ch").click((e)=>{
+    console.log(e.target);
+    console.log($(e.target).val());
+})
+
+// 테스트 후 삭제할 영역----------------------------------

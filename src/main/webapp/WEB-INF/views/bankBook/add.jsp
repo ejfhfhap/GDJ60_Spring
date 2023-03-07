@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<c:import url="../template/common_css.jsp"></c:import>
+	<link href="summernote-bs5.css" rel="stylesheet">
+    <script src="summernote-bs5.js"></script>
 </head>
 <body class = "bg-warning-subtle">
 	<c:import url="../template/show.jsp"></c:import>
@@ -55,7 +57,7 @@
 		          	  <legend class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">상세정보</legend>
 		          	  
 		          	  <div class="form-floating">
-						  <textarea name = "bookDetail" class="form-control" placeholder="Leave a comment here" id="floatingTextarea" rows=20></textarea>
+						  <textarea name = "bookDetail" class="form-control" placeholder="Leave a comment here" id="bookDetail" rows=20></textarea>
 						  <label for="floatingTextarea">Comments</label>
 					 </div>
 		          </fieldset>
@@ -94,6 +96,8 @@
 	 <script src="../resources/js/fileManager.js"></script>
 	 <script>
 		setMax(3);
+	//	$('#bookDetail').summernote();
+	
 	 </script>
 </body>
 </html>

@@ -115,7 +115,6 @@
 							<a href="./add" class="btn btn-primary">글 작성</a>
 						</div>					
 					</c:if>
-
 				</c:if>
 				
 <c:import url="../template/common_js.jsp"></c:import>

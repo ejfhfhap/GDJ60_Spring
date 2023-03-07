@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<c:import url="../template/common_css.jsp"></c:import>
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 </head>
 <body class = "bg-warning-subtle">
 	<img alt="" src="../../resources/images/hanna.jpg">
@@ -18,7 +20,7 @@
 		
 
 	    <form action="./add" method="post" enctype="multipart/form-data">
- 	  		<div class="row pb-5">
+ 	  		<div class="row pb-8">
 			 	  <fieldset class="col-1">
 			 	 		<legend class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">작성자</legend>
 			 	        writer: <input type="text" name="writer" id="writer" placeholder="" readonly="readonly" value="${member.id}">
@@ -29,7 +31,7 @@
 		                title: <input type="text" name="title" id="title" placeholder="제목입력">
 		          </fieldset>
 				
-				  <fieldset class="col-2 ms-5">
+				  <fieldset class="row col-10 ms-5">
 		          		<legend class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">내용</legend>
 		          		 contents:<textarea name="contents" id="contents" rows="" cols=""></textarea>
 		          </fieldset>
@@ -68,6 +70,21 @@
 	 <script src="../resources/js/fileManager.js"></script>
 	 <script>
 		setMax(5);
+		//$('#contents').summernote();
+		$('#contents').summernote({
+	        placeholder: 'Hello stand alone ui',
+	        tabsize: 2,
+	        height: 120,
+	        /* toolbar: [
+	          ['style', ['style']],
+	          ['font', ['bold', 'underline', 'clear']],
+	          ['color', ['color']],
+	          ['para', ['ul', 'ol', 'paragraph']],
+	          ['table', ['table']],
+	          ['insert', ['link', 'picture', 'video']],
+	          ['view', ['fullscreen', 'codeview', 'help']]
+	        ] */
+	      });
 	 </script>
 </body>
 </html>
