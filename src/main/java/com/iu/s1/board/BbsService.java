@@ -14,4 +14,5 @@ public interface BbsService {
 	public int setBoardAdd(BbsDTO bbsDTO,MultipartFile[] files, HttpSession session)throws Exception;
 	public int setBoardUpdate(BbsDTO bbsDTO)throws Exception;
 	public int setBoardDelete(BbsDTO bbsDTO)throws Exception;
+	public int setBoardUpdate(BbsDTO bbsDTO,MultipartFile[] files,Integer[] fileNums)throws Exception;
 }

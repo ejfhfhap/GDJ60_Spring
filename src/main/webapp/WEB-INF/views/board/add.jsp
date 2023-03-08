@@ -70,21 +70,8 @@
 	 <script src="../resources/js/fileManager.js"></script>
 	 <script>
 		setMax(5);
-		//$('#contents').summernote();
-		$('#contents').summernote({
-	        placeholder: 'Hello stand alone ui',
-	        tabsize: 2,
-	        height: 120,
-	        /* toolbar: [
-	          ['style', ['style']],
-	          ['font', ['bold', 'underline', 'clear']],
-	          ['color', ['color']],
-	          ['para', ['ul', 'ol', 'paragraph']],
-	          ['table', ['table']],
-	          ['insert', ['link', 'picture', 'video']],
-	          ['view', ['fullscreen', 'codeview', 'help']]
-	        ] */
-	      });
+		$('#contents').summernote();
+		
 	 </script>
 </body>
 </html>

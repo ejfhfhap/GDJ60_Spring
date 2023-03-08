@@ -8,4 +8,5 @@ public interface BoardDAO extends BbsDAO{
 	public int setBoardFileAdd(BoardFileDTO boardFileDTO)throws Exception;
 	public List<BoardFileDTO> getBoardFileList(BbsDTO bbsDTO)throws Exception;
 	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO)throws Exception;
+	public int setBoardFileDelete(Integer fileNum)throws Exception;
 }

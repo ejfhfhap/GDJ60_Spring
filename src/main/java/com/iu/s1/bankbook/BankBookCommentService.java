@@ -50,4 +50,10 @@ public class BankBookCommentService implements BbsService{
 		return bankBookCommentDAO.setBoardDelete(bbsDTO);
 	}
 
+	@Override
+	public int setBoardUpdate(BbsDTO bbsDTO, MultipartFile[] files, Integer[] fileNums) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 }

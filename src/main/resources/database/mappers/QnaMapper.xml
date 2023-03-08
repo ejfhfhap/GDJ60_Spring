@@ -90,7 +90,14 @@
  		SELECT * FROM QNAFILES WHERE NUM = #{num}
  	</select>
  	
+ 	<delete id="setBoardFileDelete" parameterType="Integer">
+ 		DELETE QNAFILES WHERE fileNum = #{fileNum}
+ 	</delete>
+ 	
  	<select id="getBoardFileDetail" parameterType="BoardFileDTO" resultType="BoardFileDTO">
  		SELECT * FROM QNAFILES WHERE FILENUM = #{fileNum}
  	</select>
+ 	<update id="setBoardUpdate" parameterType="BbsDTO">
+ 		UPDATE QNA SET title = #{title}, contents = #{contents} where num = #{num}
+ 	</update>
  </mapper>
