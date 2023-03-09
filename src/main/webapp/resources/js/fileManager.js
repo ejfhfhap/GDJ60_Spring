@@ -28,6 +28,30 @@ function addFileBtn(cnt){
         index++;
     }
 }
+function deleteFileDB(fileNum){
+
+    $.ajax({
+        type:'POST',
+        url:'./boardFileDelete',
+        data:{
+            fileNum:fileNum
+        },
+        success:(response)=>{
+            response = response.trim();
+            if(response > 0){
+                alert('삭제 되었습니다');
+                addCount--;
+            }else{
+                alert("삭제 실패");
+            }
+        },
+        error:()=>{
+
+        }
+    })
+}
+
+
 $("#fileList").on('click','.del',(e)=>{
     $(e.target.parentNode).remove();
     addCount--;
@@ -43,21 +67,32 @@ $('#btnAdd').click(()=>{
 })
 $('.deleteCheck').click((e)=>{
     console.log(e.target.checked);
-    if(e.target.checked == true){
-        let okCheck = confirm('정말 삭제 하시겠습니까?');
-        if(okCheck){
-           addCount--;
-        }else{
-            e.target.checked = false;
-        }
+    let okCheck = confirm('정말 삭제 하시겠습니까?');
+    if(okCheck){
+        let fileNum = $(e.target).val();
+        deleteFileDB(fileNum);
+        $(e.target).parent().parent().remove();
     }else{
-        if(addCount >= maxCount){
-            index--;
-            addCount--;
-            $('#files' + index).remove();
-        }
-        addCount++;
+        $(e.target).prop('checked',false);
     }
+
+
+    // ------------------------------------------------
+    // if(e.target.checked == true){
+    //     let okCheck = confirm('정말 삭제 하시겠습니까?');
+    //     if(okCheck){
+    //        addCount--;
+    //     }else{
+    //         e.target.checked = false;
+    //     }
+    // }else{
+    //     if(addCount >= maxCount){
+    //         index--;
+    //         addCount--;
+    //         $('#files' + index).remove();
+    //     }
+    //     addCount++;
+    // }
 })
 
 

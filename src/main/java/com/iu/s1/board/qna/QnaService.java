@@ -28,6 +28,7 @@ public class QnaService implements BoardService{
 	@Autowired
 	private HttpSession session;
 	
+	
 	@Override
 	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
@@ -133,18 +134,19 @@ public class QnaService implements BoardService{
 	public int setBoardUpdate(BbsDTO bbsDTO, MultipartFile[] files, Integer[] fileNums) throws Exception {
 		// TODO Auto-generated method stub
 		int result = qnaDAO.setBoardUpdate(bbsDTO);
-		
 		String realPath = session.getServletContext().getRealPath("/resources/upload/qna");
 		System.out.println(realPath);
 		
 		// 파일 하드디스크 삭제 만들어보기
-		for(Integer fileNum : fileNums) {
-			BoardFileDTO boardFileDTO = new BoardFileDTO();
-			boardFileDTO.setFileNum(fileNum);
-			boardFileDTO = qnaDAO.getBoardFileDetail(boardFileDTO);
-			fileManager.fileDelete(realPath, boardFileDTO.getFileName());
-			
-			qnaDAO.setBoardFileDelete(fileNum);
+		if(fileNums != null) {
+			for(Integer fileNum : fileNums) {
+				BoardFileDTO boardFileDTO = new BoardFileDTO();
+				boardFileDTO.setFileNum(fileNum);
+				boardFileDTO = qnaDAO.getBoardFileDetail(boardFileDTO);
+				fileManager.fileDelete(realPath, boardFileDTO.getFileName());
+				
+				qnaDAO.setBoardFileDelete(fileNum);
+			}
 		}
 		
 		// file을 하드디스크에 저장
@@ -162,6 +164,14 @@ public class QnaService implements BoardService{
 			boardFileDTO.setOriName(file.getOriginalFilename());
 			result = qnaDAO.setBoardFileAdd(boardFileDTO);
 		}
+		
+		return result;
+	}
+	public int setBoardFileDelete(BoardFileDTO boardFileDTO) throws Exception {
+		boardFileDTO = qnaDAO.getBoardFileDetail(boardFileDTO);
+		String realPath = session.getServletContext().getRealPath("/resources/upload/qna");
+		int result = qnaDAO.setBoardFileDelete(boardFileDTO.getFileNum());
+		fileManager.fileDelete(realPath, boardFileDTO.getFileName());
 		
 		return result;
 	}

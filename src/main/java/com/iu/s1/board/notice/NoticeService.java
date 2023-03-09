@@ -96,6 +96,12 @@ public class NoticeService implements BoardService{
 		return 0;
 	}
 
+	@Override
+	public int setBoardFileDelete(BoardFileDTO boardFileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 	
 	
 }

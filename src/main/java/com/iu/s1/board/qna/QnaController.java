@@ -162,4 +162,13 @@ public class QnaController {
 		modelAndView.setViewName("/common/result");
 		return modelAndView;
 	}
+	
+	@PostMapping("/boardFileDelete")
+	public ModelAndView setBoardFileDelete(BoardFileDTO boardFileDTO)throws Exception{
+		ModelAndView modelAndView = new ModelAndView();
+		int result = qnaService.setBoardFileDelete(boardFileDTO);
+		modelAndView.addObject("result", result);
+		modelAndView.setViewName("/common/ajaxResult");
+		return modelAndView;
+	}
 }

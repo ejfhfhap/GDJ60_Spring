@@ -45,7 +45,7 @@ public class FileManager {
 		name = name + "_" + multipartFile.getOriginalFilename();
 		
 		//OrginalName에서 substring이용해서 추출
-		System.out.println(name);
+	//	System.out.println(name);
 		
 		// 5. 파일 저장 두가지 방법
 		file = new File(file, name);
