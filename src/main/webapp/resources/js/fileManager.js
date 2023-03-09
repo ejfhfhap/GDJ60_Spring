@@ -34,7 +34,7 @@ function deleteFileDB(fileNum){
         type:'POST',
         url:'./boardFileDelete',
         data:{
-            fileNum:fileNum
+            "fileNum":fileNum
         },
         success:(response)=>{
             response = response.trim();
