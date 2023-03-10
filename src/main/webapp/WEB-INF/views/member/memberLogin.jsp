@@ -17,7 +17,7 @@
  	<h2> member login</h2>
      <form class="row justify-content-center" action="./memberLogin" method="post">
 		<label for="inputid" class="form-label">id</label>
-		<input type="text" id="id" name="id" class="form-control" aria-describedby="passwordHelpBlock">
+		<input type="text" value="${cookie.rememberId.value}" id="id" name="id" class="form-control" aria-describedby="passwordHelpBlock">
 		<div id="id" class="form-text">
 		  Your id must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
 		</div>
@@ -27,7 +27,7 @@
 		<div id="password" class="form-text">
 		  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
 		</div>
-
+		id기억하기<input type="checkbox" name="remember" value="remember" id="remember">
         <button type="submit" class="btn btn-outline-success mx-5" style="width:30%">submit</button>
     </form>
     </div>
